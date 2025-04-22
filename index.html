@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suchit Pathak | Data Analytics Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f4f7f9;
+            color: #333;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #3498db; /* Consistent blue color */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* --- Header Styles --- */
+        header {
+             background: linear-gradient(135deg, #1e3c72, #2a5298); /* Darker blue gradient */
+             color: white;
+             text-align: center;
+             position: relative;
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+             padding: 40px 20px;
+             clip-path: ellipse(100% 100% at 50% 0%); /* Curved bottom */
+             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Removed profile photo styles (hidden or removed from HTML) */
+
+        header h1 {
+            margin: 0 0 4px 0; /* Space below h1 */
+            font-size: 2.3rem; /* Heading font size */
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Tagline style */
+        .header-tagline {
+            margin: 0 0 12px 0; /* Space below tagline */
+            font-size: 1rem; /* Tagline font size */
+            color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            font-weight: 300; /* Lighter weight for tagline */
+        }
+
+        /* Style for bold text within the tagline */
+        .header-tagline strong {
+            font-weight: 600; /* Make bold text within tagline bolder */
+        }
+
+
+        nav {
+            margin-top: 12px; /* Space above navigation */
+            display: flex; /* Arrange nav items in a row */
+            justify-content: center; /* Center nav items horizontally */
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 12px; /* Horizontal margin between nav items */
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+            padding-bottom: 2px; /* Space for underline effect */
+            border-bottom: 2px solid transparent; /* Transparent border for hover effect */
+        }
+
+        nav a:hover {
+            color: #2c3e50;
+            border-bottom-color: #2c3e50; /* Color change and underline on hover */
+        }
+         /* --- End Header Styles --- */
+
+
+        /* Hero section - text only */
+        #hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            text-align: center;
+            background: #f4f7f9; /* Match body background */
+            margin-bottom: 40px; /* Space below the hero section */
+        }
+
+        #hero #hero-text-content {
+             /* Styles for main title and tagline */
+             max-width: 800px; /* Limit width of hero text */
+             margin: 0 auto; /* Center hero text */
+             color: #333; /* Default text color */
+        }
+
+        #hero-text-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: #2c3e50; /* Primary color */
+        }
+         #hero-text-content p {
+             font-size: 1.3rem;
+             color: #555;
+             margin-top: 0;
+             margin-bottom: 0; /* No bottom margin, as about-box follows */
+         }
+
+        /* My Story Box (as a card) - Now shares styles with Certifications */
+        #about-box {
+            max-width: 1000px; /* Match max-width of certifications */
+            margin: 0 auto 40px auto; /* Center, space below, no top margin (hero has bottom margin) */
+            padding: 30px;
+            background: #fff; /* White background */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            text-align: left; /* Align text within the box */
+            line-height: 1.6;
+            color: #333; /* Default text color */
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+        #about-box h2 {
+             text-align: center; /* Center story heading within the box */
+             font-size: 2rem; /* Match other section headings */
+             color: #2c3e50;
+             margin-top: 0;
+             margin-bottom: 20px;
+        }
+
+        #about-box p {
+             font-size: 1rem; /* Body text size */
+             margin-bottom: 20px;
+             color: #555; /* Slightly lighter text for paragraphs */
+        }
+
+        #about-box ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 20px 0; /* Space below list */
+        }
+
+        #about-box li {
+             margin-bottom: 10px;
+             position: relative;
+             padding-left: 30px;
+             font-size: 1rem; /* List item size */
+             line-height: 1.5;
+             color: #555; /* Slightly lighter text for list items */
+        }
+         #about-box li::before {
+             content: '\f0da';
+             font-family: 'Font Awesome 6 Free';
+             font-weight: 900;
+             position: absolute;
+             left: 0;
+             color: #3498db;
+             font-size: 1rem;
+         }
+
+        /* Style for the button container - Centered and spaced */
+         .button-container {
+             display: flex;
+             justify-content: center; /* Center items horizontally */
+             align-items: center; /* Align items vertically */
+             gap: 15px; /* Space between buttons */
+             margin-top: 30px; /* Space above the buttons */
+             flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+         }
+
+         .resume-button {
+             background-color: #3498db;
+             color: white;
+             padding: 10px 20px;
+             text-decoration: none;
+             border-radius: 5px;
+             transition: background-color 0.3s ease;
+             font-weight: 500;
+             display: inline-block; /* Ensure buttons respect container's flex centering */
+             text-align: center; /* Center text within button */
+         }
+
+         .resume-button:hover {
+             background-color: #2980b9;
+         }
+
+
+        /* Certifications section - Now has the card styles directly */
+        #certifications {
+            margin-top: 0; /* No top margin, about-box has bottom margin */
+            margin-bottom: 40px; /* Space below certifications box */
+            max-width: 1000px; /* Match about-box max-width */
+            margin-left: auto;
+            margin-right: auto;
+            padding: 30px; /* Match about-box padding */
+            background: #fff; /* White background */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            color: #333;
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+
+        #certifications h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        /* Keep other certifications styles (items, buttons, etc.) */
+        .certification {
+             display: flex;
+             align-items: center;
+             justify-content: space-between;
+             margin: 10px 0;
+             padding: 10px 0; /* Add some vertical padding for separation */
+             border-bottom: 1px solid #eee; /* Add a separator line */
+        }
+        .certification:last-child {
+             border-bottom: none; /* No border for the last item */
+             padding-bottom: 0;
+        }
+
+
+         .certification i {
+             font-size: 1.8em;
+             color: #3498db;
+             margin-right: 15px;
+              flex-shrink: 0;
+         }
+
+         .certification-name {
+             flex-grow: 1;
+             font-weight: bold;
+             text-decoration: none;
+             color: #333;
+             font-size: 0.95rem;
+             margin-right: 15px;
+             text-align: left;
+         }
+
+         .certification-name:hover {
+             text-decoration: underline;
+             color: #3498db;
+         }
+
+         .summary-button {
+             background-color: #3498db;
+             color: white;
+             padding: 6px 10px;
+             border: none;
+             border-radius: 5px;
+             cursor: pointer;
+             transition: background-color 0.3s ease;
+             font-size: 0.8em;
+             flex-shrink: 0;
+         }
+
+         .summary-button:hover {
+             background-color: #2980b9;
+         }
+
+         .view-all-certifications {
+             background-color: #3498db;
+             color: white;
+             padding: 10px 15px;
+             text-decoration: none;
+             border-radius: 5px;
+             margin-top: 20px;
+             transition: background-color 0.3s ease;
+              display: block;
+              text-align: center;
+              font-weight: 500;
+         }
+
+         .view-all-certifications:hover {
+             background-color: #2980b9;
+         }
+
+
+        /* Modal and Popup styles remain the same */
+         .modal {
+             display: none;
+             position: fixed;
+             z-index: 1000;
+             left: 0;
+             top: 0;
+             width: 100%;
+             height: 100%;
+             overflow: auto;
+             background-color: rgba(0, 0, 0, 0.6);
+             backdrop-filter: blur(5px);
+         }
+
+         .modal-content {
+             background-color: #fefefe;
+             margin: 10% auto;
+             padding: 30px;
+             border: 1px solid #888;
+             width: 90%;
+             max-width: 600px;
+             border-radius: 8px;
+             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+             position: relative;
+         }
+
+         .modal-content p#modal-summary-text ul {
+             list-style-type: disc;
+             padding-left: 20px;
+             margin-bottom: 0;
+         }
+          .modal-content p#modal-summary-text li {
+              margin-bottom: 8px;
+          }
+
+         .close {
+             color: #aaa;
+             position: absolute;
+             top: 10px;
+             right: 15px;
+             font-size: 28px;
+             font-weight: bold;
+             cursor: pointer;
+             transition: color 0.3s ease;
+         }
+
+         .close:hover,
+         .close:focus {
+             color: #333;
+             text-decoration: none;
+         }
+
+         /* Removed profile popup styles */
+
+
+         /* Carousel styles remain the same */
+        #carousel {
+            max-width: 1000px;
+            margin: 40px auto;
+            text-align: center;
+            position: relative;
+             padding: 0 20px;
+        }
+
+        #carousel h2 {
+             font-size: 2rem;
+             color: #2c3e50;
+             margin-bottom: 30px;
+        }
+
+        .carousel-container {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            display: block;
+            border-radius: 6px;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(52, 152, 219, 0.7);
+            color: #fff;
+            border: none;
+            padding: 15px 10px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(52, 152, 219, 1);
+        }
+
+
+        .carousel-btn.left {
+            left: 10px;
+        }
+
+        .carousel-btn.right {
+            right: 10px;
+        }
+
+
+        /* Project styles remain the same */
+        #projects {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+         #projects h2 {
+             font-size: 2rem;
+             color: #2c3e50;
+             margin-bottom: 30px;
+             text-align: center;
+         }
+
+        .project-card {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            background: white;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+         .project-card:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+         }
+
+
+        .project-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            padding: 5px;
+            flex-shrink: 0;
+        }
+
+        .card-text {
+            flex-grow: 1;
+        }
+
+        .card-text h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: #2c3e50;
+             margin-bottom: 5px;
+        }
+
+         .card-text h3 a {
+            color: #2c3e50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+         }
+         .card-text h3 a:hover {
+             color: #3498db;
+             text-decoration: underline;
+         }
+
+
+        /* Contact styles remain the same */
+        #contact {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        #contact h2 {
+             font-size: 2rem;
+             color: #2c3e50;
+             margin-bottom: 30px;
+             text-align: center;
+         }
+        #contact p {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+
+        /* Footer styles remain the same */
+        footer {
+            background: #1e3c72; /* Darker consistent blue */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+             margin-top: 0;
+             margin-bottom: 15px;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #2c3e50;
+        }
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+             /* Header responsive styles */
+             header {
+                 padding: 15px 10px; /* Adjust padding for smaller screens */
+                 flex-direction: column; /* Stack vertically */
+                 align-items: center; /* Center items */
+             }
+
+             header h1 {
+                 font-size: 1.8rem; /* Smaller font size on mobile */
+                 margin-bottom: 5px; /* Small space below name */
+             }
+
+            .header-tagline {
+                font-size: 0.9rem; /* Smaller tagline on mobile */
+                margin-bottom: 10px;
+            }
+
+             nav {
+                 margin-top: 8px; /* Less space above nav on mobile */
+                 flex-direction: column; /* Stack nav links vertically */
+                 gap: 6px; /* Less space between stacked links */
+             }
+
+             nav a {
+                 margin: 0; /* Remove horizontal margin */
+                 padding: 4px 0; /* Adjust vertical touch area */
+             }
+
+
+            #hero {
+                padding: 40px 15px;
+                margin-bottom: 30px; /* Adjust margin */
+            }
+
+            #hero-text-content h1 { font-size: 2.2rem; }
+            #hero-text-content p { font-size: 1.1rem; }
+
+
+            /* My Story Box */
+            #about-box {
+                margin: 0 auto 30px auto; /* Adjust margin */
+                padding: 20px 15px; /* Adjust padding */
+                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Lighter shadow */
+            }
+            #about-box h2 { font-size: 1.8rem; }
+            #about-box p, #about-box li { font-size: 0.95rem; }
+
+
+            /* Certification button container */
+             .button-container {
+                 flex-direction: column; /* Stack buttons vertically */
+                 gap: 10px; /* Adjust gap for vertical stack */
+                 margin-top: 20px; /* Adjust top margin */
+             }
+              .resume-button {
+                   width: 80%; /* Make buttons wider */
+                   max-width: 250px; /* Limit max width */
+              }
+
+
+            /* Certifications section */
+            #certifications {
+                margin-top: 0; /* No top margin */
+                margin-bottom: 30px; /* Adjust margin */
+                padding: 20px 15px; /* Adjust padding to match about-box responsive padding */
+                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Match about-box responsive shadow */
+            }
+             #certifications h2 { font-size: 1.8rem; }
+
+
+             /* certification item stacking already handled */
+             .certification {
+                 flex-direction: column;
+                 align-items: flex-start;
+                 margin: 15px 0;
+                 padding-bottom: 15px;
+                 border-bottom: 1px solid #eee;
+             }
+
+             .certification:last-child {
+                 border-bottom: none;
+                 padding-bottom: 0;
+             }
+
+
+             .certification i {
+                 margin-bottom: 8px;
+                 margin-right: 0;
+             }
+
+             .certification-name {
+                 margin-right: 0;
+                 margin-bottom: 8px;
+                 text-align: left;
+                 width: 100%;
+             }
+
+             .summary-button {
+                 align-self: flex-end;
+                 font-size: 0.9em;
+             }
+
+
+              /* project card stacking already handled */
+              #projects .project-card {
+                   flex-direction: column;
+                   align-items: center;
+                   padding: 15px;
+              }
+              #projects .project-card img {
+                   margin-bottom: 15px;
+              }
+               #projects .project-card .card-text {
+                   text-align: center;
+               }
+               #projects .project-card .card-text h3,
+               #projects .project-card .card-text p {
+                   text-align: center;
+               }
+
+
+               /* Modal and Popup responsive adjustments */
+               .modal-content {
+                   margin: 10% auto;
+                   width: 90%;
+                   padding: 20px;
+               }
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Data Analytics Portfolio</h1> <p class="header-tagline"><strong>Data Analyst</strong> | Transforming Data into Insight</p> <nav>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div id="hero-text-content">
+            <h1>Hey, I'm Suchit Pathak</h1>
+            <p>I like to turn data into business insights using Python, SQL, Tableau & Excel</p>
+        </div>
+    </section>
+
+    <div id="about-box">
+        <h2>My Story</h2>
+        <p>Driven by a passion to transform raw data into actionable insights, I leverage my skills in Python, SQL, Tableau, and Excel to solve complex business challenges.</p>
+        <ul>
+            <li><i class="fas fa-graduation-cap"></i> <strong>Data Science Graduate:</strong> MSc from the University of Birmingham, passionate about leveraging data to drive business insights.</li>
+            <li><i class="fas fa-laptop-code"></i> <strong>Technical Proficiency:</strong> Skilled in Python, SQL, Excel, and Tableau, with a focus on building dashboards and automating reports.</li>
+            <li><i class="fas fa-puzzle-piece"></i> <strong>Problem Solver:</strong> Adept at uncovering patterns and translating data into actionable strategies for informed decision-making.</li>
+            <li><i class="fas fa-lightbulb"></i> <strong>Driven & Innovative:</strong> Committed to continuous learning and applying sophisticated data-driven approaches to solve complex challenges.</li>
+            <li><i class="fas fa-bullseye"></i> <strong>Goal-Oriented:</strong> Aim to utilize strong analytical and organizational skills to deliver impactful results in data-centric projects.</li>
+        </ul>
+        <div class="button-container">
+            <a href="#projects" class="resume-button">See My Projects</a>
+            <a href="assets/resumes/Suchit Pathak CV Final copy.pdf" download="Suchit Pathak CV Final copy.pdf" class="resume-button">Download Resume</a>
+        </div>
+    </div>
+
+    <section id="certifications">
+         <h2>My Certifications</h2>
+         <div class="certification">
+             <i class="fas fa-database"></i>
+             <a href="assets/certificates/Suchit_Pathak_Coursera_Databases_and_SQL_for_data_science_with_Python_IBM.pdf"
+                 download="Suchit_Pathak_Coursera_Databases_and_SQL_for_data_science_with_Python_IBM.pdf"
+                 class="certification-name">Databases and SQL for data science with Python – Coursera; certified by IBM</a>
+             <button class="summary-button"
+                 data-summary="Learned to design and create relational databases. Mastered SQL querying for data extraction and manipulation. Understood database management concepts. Applied SQL with Python for data analysis.">Summary</button>
+         </div>
+         <div class="certification">
+             <i class="fab fa-python"></i>
+             <a href="assets/certificates/Suchit_Pathak_Coursera_Data_Analysis_with_Python_IBM.pdf"
+                 download="Suchit_Pathak_Coursera_Data_Analysis_with_Python_IBM.pdf"
+                 class="certification-name">Data Analysis with Python – Coursera; certified by IBM</a>
+             <button class="summary-button"
+                 data-summary="Utilized Pandas for data manipulation and cleaning. Employed NumPy for numerical operations. Visualized data using Matplotlib and Seaborn. Performed statistical analysis with Python.">Summary</button>
+         </div>
+         <div class="certification">
+             <i class="fab fa-python"></i>
+             <a href="assets/certificates/Suchit_Pathak_Coursera_Python_for_data_science_AI_Development_IBM.pdf"
+                 download="Suchit_Pathak_Coursera_Python_for_data_science_AI_Development_IBM.pdf"
+                 class="certification-name">Python for data science, AI, Development - Coursera; certified by IBM</a>
+             <button class="summary-button"
+                 data-summary="Developed proficiency in Python programming fundamentals. Explored Python libraries for AI and data science. Learned Python for web development. Applied Python for automation.">Summary</button>
+         </div>
+         <div class="certification">
+             <i class="fas fa-database"></i>
+             <a href="assets/certificates/Suchit_Pathak_Coursera_SQL_for_Data_Science_UCDAVIS.pdf"
+                 download="Suchit_Pathak_Coursera_SQL_for_Data_Science_UCDAVIS.pdf"
+                 class="certification-name">SQL for Data Science – Coursera; certified by UCDAVIS</a>
+             <button class="summary-button"
+                 data-summary="Advanced SQL querying and data manipulation. Performed complex joins and subqueries. Optimized SQL queries for performance. Applied SQL for data analysis and reporting.">Summary</button>
+         </div>
+         <div class="certification">
+             <i class="fas fa-chart-bar"></i>
+             <a href="assets/certificates/Suchit_Pathak_Coursera_Data_Visualization_with_Tableau_Specialization_UCDAVIS.pdf"
+                 download="Suchit_Pathak_Coursera_Data_Visualization_with_Tableau_Specialization_UCDAVIS.pdf"
+                 class="certification-name">Data Visualization with Tableau Specialization – Coursera; certified by UCDAVIS</a>
+             <button class="summary-button"
+                 data-summary="Created interactive dashboards in Tableau. Visualized complex datasets with various chart types. Designed effective data stories. Performed data analysis within Tableau.">Summary</button>
+         </div>
+         <div class="certification">
+             <i class="fab fa-microsoft"></i>
+             <a href="assets/certificates/Suchit_Pathak_Coursera_Microsoft_Azure_SQL_Microsoft.pdf"
+                 download="Suchit_Pathak_Coursera_Microsoft_Azure_SQL_Microsoft.pdf"
+                 class="certification-name">Microsoft Azure SQL – Coursera; certified by Microsoft</a>
+             <button class="summary-button"
+                 data-summary="Explored Azure SQL database management. Learned cloud-based data solutions. Understood Azure SQL security. Applied Azure SQL for data storage and retrieval.">Summary</button>
+         </div>
+         <a href="https://www.coursera.org/learner/suchit-pathak-1221" class="view-all-certifications"
+             target="_blank">View My Coursera Certifications</a>
+    </section>
+
+
+    <div id="summary-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-summary-text"></p>
+        </div>
+    </div>
+
+    <section id="carousel">
+        <h2>Visual Snapshots</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn left" onclick="plusSlides(-1)">&#10094;</button>
+            <div class="carousel-slide">
+                <img src="assets/images/expansion-insights.png" alt="Expansion Insights Dashboard">
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/images/superstore-dashboard.png" alt="Superstore Dashboard">
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/images/expansion-insights-2.png" alt="Expansion Insights Alternate View">
+            </div>
+            <button class="carousel-btn right" onclick="plusSlides(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="project-card">
+            <img src="assets/images/expansion-thumbnail.jpg" alt="Expansion Insights Thumbnail" />
+            <div class="card-text">
+                <h3><a href="projects/expansion-insights.html">Expansion Insights</a></h3>
+                <p>Identified trends in revenue and customer growth to drive strategic retail expansion decisions.</p>
+            </div>
+        </div>
+        <div class="project-card">
+            <img src="assets/images/superstore-thumbnail.jpg" alt="Superstore Dashboard Thumbnail" />
+            <div class="card-text">
+                <h3><a href="projects/superstore-dashboard.html">Superstore Sales Insights</a></h3>
+                <p>Visualized customer profitability and regional sales to uncover data-backed business opportunities.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Let's connect! Feel free to reach out via email or LinkedIn.</p>
+    </section>
+
+    <footer>
+        <p>Suchit Pathak</p>
+        <div class="social-icons">
+            <a href="mailto:suchitpathak0807@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/suchit-pathak/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.transform = `translateX(${-100 * index}%)`;
+            });
+        }
+
+        function plusSlides(n) {
+            slideIndex = (slideIndex + n + slides.length) % slides.length;
+            showSlide(slideIndex);
+        }
+
+        // Auto-advance carousel, pause on hover
+        let carouselInterval = setInterval(() => plusSlides(1), 5000);
+        document.querySelector('.carousel-container').addEventListener('mouseenter', () => clearInterval(carouselInterval));
+        document.querySelector('.carousel-container').addEventListener('mouseleave', () => carouselInterval = setInterval(() => plusSlides(1), 5000));
+
+        showSlide(slideIndex); // Show the initial slide
+
+
+        // Summary Modal handlers
+        const summaryButtons = document.querySelectorAll('.summary-button');
+        const modal = document.getElementById('summary-modal'); // Summary modal
+        const modalText = document.getElementById('modal-summary-text');
+        const closeButton = document.querySelector('#summary-modal .close'); // Specific close button for summary modal
+
+
+        summaryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const summary = button.dataset.summary.split('. ');
+                let formattedSummary = '<ul>';
+                summary.forEach(point => {
+                     if (point) { // Check for empty strings
+                         formattedSummary += `<li>${point}.</li>`; // Add back the period
+                     }
+                });
+                formattedSummary += '</ul>';
+                modalText.innerHTML = formattedSummary;
+                modal.style.display = 'block';
+            });
+        });
+
+        closeButton.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Close summary modal when clicking outside its content
+        window.addEventListener('click', (event) => {
+            const summaryModal = document.getElementById('summary-modal');
+            if (event.target === summaryModal) { // Check if the click is directly on the summary modal background
+                summaryModal.style.display = 'none';
+            }
+            /* Removed profile popup window click handler */
+        });
+
+        /* Removed profile popup handlers */
+
+    </script>
+</body>
+</html>

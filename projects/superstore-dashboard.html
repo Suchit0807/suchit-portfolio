@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Profitability & Segment Analysis | Suchit Pathak</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg-light: #f9f9f9;
+        --text-light: #333;
+        --bg-dark: #222;
+        --text-dark: #eee;
+        --primary: #2c3e50;
+        --secondary: #ecf0f1;
+        --accent: #3498db;
+        --card-border-color: #e0e0e0;
+        --card-bg: #ffffff;
+        --card-hover-bg: #f5faff;
+        --font-family: 'Times New Roman', Times, serif;
+        --header-footer-bg: #3498db;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font-family);
+        background-color: var(--bg-light);
+        color: var(--text-light);
+        line-height: 1.7;
+        scroll-behavior: smooth;
+        transition: background 0.3s, color 0.3s;
+        font-size: 15px;
+      }
+      body.dark-mode {
+        background-color: var(--bg-dark);
+        color: var(--text-dark);
+        --card-border-color: #444;
+        --card-bg: #333;
+        --card-hover-bg: #3f3f3f;
+        --primary: #ecf0f1; /* Adjust primary text color for dark mode */
+        --secondary: #3a3a3a; /* Adjust secondary background for dark mode */
+      }
+      header, footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--header-footer-bg);
+        color: white;
+        padding: 18px;
+      }
+      header h1, footer p {
+        margin: 0;
+        font-size: 2.0rem;
+        flex-grow: 1;
+        text-align: center;
+        font-weight: 600;
+      }
+      footer p {
+        font-size: 0.9rem;
+      }
+      .header-button {
+        background-color: white;
+        color: var(--primary);
+        padding: 8px 15px;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 8px;
+        margin: 0 8px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        border: none;
+        transition: background-color 0.3s, color 0.3s;
+      }
+       body.dark-mode .header-button {
+           color: #222; /* Adjust button text color in dark mode if needed */
+       }
+      .header-button:hover {
+        background-color: var(--accent);
+        color: white;
+      }
+      .section-container {
+        padding: 40px 25px 60px 25px;
+        max-width: 1100px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .main-heading {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 2.0rem;
+        font-weight: 700;
+        color: var(--primary);
+        width: 100%;
+         padding-left: 37px; /* Align with content box */
+         box-sizing: border-box;
+      }
+       .visual-heading {
+         text-align: center; /* Centered as requested */
+         margin-bottom: 20px;
+         font-size: 1.6rem;
+         font-weight: 600;
+         color: var(--primary);
+         margin-top: 40px;
+         width: 100%; /* Take full width to center within container */
+         margin-left: 0; /* Remove left margin */
+       }
+       .visual-heading i {
+           margin-right: 10px;
+           color: var(--accent);
+       }
+
+      .content-box {
+        margin-left: 37px;
+        width: calc(100% - 37px);
+        text-align: left;
+        margin-bottom: 30px;
+      }
+      .content-box h3 {
+        font-size: 1.2rem;
+        margin-left: 0;
+        color: var(--primary);
+        margin-top: 15px;
+        margin-bottom: 8px;
+      }
+      .content-box p, .content-box ul {
+        font-size: 1.0rem;
+        margin-left: 0;
+        padding-left: 20px;
+      }
+       .content-box ul li {
+         margin-left: 0;
+         margin-bottom: 5px;
+       }
+       .content-box ul li::marker {
+           color: var(--accent);
+       }
+
+      /* Image Box Centering */
+      .image-box {
+          width: 100%; /* Container takes full width */
+          margin: 20px 0 10px 0; /* Vertical spacing, reduced bottom margin to make space for link */
+          text-align: center; /* Center content fallback (optional) */
+      }
+      .image-box img {
+          display: block; /* Make image block level */
+          margin-left: auto; /* Auto margins for horizontal centering */
+          margin-right: auto;
+          width: 85%; /* As per original */
+          max-width: 900px; /* As per original */
+          border-radius: 10px;
+          box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+          transition: transform 0.3s ease-in-out;
+          cursor: zoom-in;
+      }
+       body.dark-mode .image-box img {
+         box-shadow: 0 5px 15px rgba(255, 255, 255, 0.08);
+       }
+
+       .dashboard-link {
+           text-align: center;
+           margin-top: 10px;
+           margin-bottom: 20px; /* Space before the accordion */
+           font-size: 0.95rem;
+       }
+
+       .dashboard-link a {
+           color: var(--accent);
+           text-decoration: underline;
+           transition: color 0.3s ease;
+       }
+
+       .dashboard-link a:hover {
+           color: #2980b9;
+       }
+
+       body.dark-mode .dashboard-link a {
+            color: #5dade2;
+       }
+       body.dark-mode .dashboard-link a:hover {
+            color: #85c1e9;
+       }
+
+
+      /* Main Accordion Styles */
+      .accordion {
+        background-color: var(--secondary);
+        color: var(--primary);
+        cursor: pointer;
+        padding: 14px 20px;
+        width: calc(100% - 37px);
+        max-width: none;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 1.0rem;
+        transition: background-color 0.4s ease;
+        margin: 10px 0 0 37px;
+        border-radius: 8px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+      }
+      .accordion:hover {
+        background-color: #e0e0e0;
+      }
+      body.dark-mode .accordion {
+          color: var(--text-dark); /* Ensure text is readable */
+      }
+      body.dark-mode .accordion:hover {
+           background-color: #4f4f4f;
+      }
+      .panel {
+        padding: 25px; /* Slightly more padding */
+        display: none;
+        overflow: hidden;
+        background-color: var(--card-bg);
+        border: 1px solid var(--card-border-color);
+        border-top: none;
+        border-radius: 0 0 8px 8px;
+        margin-bottom: 30px;
+        font-size: 0.9rem;
+        animation: fadeIn 0.6s ease-out;
+        width: calc(100% - 37px);
+        margin-left: 37px;
+        box-sizing: border-box;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+       body.dark-mode .panel {
+           background-color: #2a2a2a; /* Darker panel background */
+       }
+      .panel b {
+        color: var(--primary);
+        font-size: 1.0rem;
+        display: block;
+        margin-bottom: 10px; /* Increased space */
+        margin-top: 10px; /* Space above heading */
+      }
+       .panel b:first-child {
+         margin-top: 0; /* No top margin for the very first element */
+       }
+      .panel h3 {
+        font-size: 1.1rem;
+        color: var(--primary);
+        font-family: var(--font-family);
+        margin-top: 15px;
+      }
+      .panel i {
+        color: #777;
+      }
+      body.dark-mode .panel i {
+          color: #aaa;
+      }
+      .panel ul, .panel p {
+        font-size: 0.92rem; /* Slightly larger */
+        padding-left: 20px;
+        font-family: var(--font-family);
+        margin-bottom: 15px;
+        line-height: 1.6; /* Improve readability */
+      }
+       .panel > ul { /* Direct ul children of panel */
+         margin-bottom: 20px; /* More space after main lists */
+       }
+      .panel ul li {
+        margin-bottom: 8px; /* Increased space */
+      }
+       .panel ul li::marker {
+         color: var(--accent);
+       }
+       /* Style for Insight/Theory sub-points */
+       .panel ul ul {
+           margin-top: 8px; /* Space before nested list */
+           margin-bottom: 10px; /* Space after nested list */
+           padding-left: 25px; /* Further indent nested list */
+       }
+       .panel ul ul li {
+            font-size: 0.9rem; /* Slightly smaller for sub-points */
+            margin-bottom: 5px;
+       }
+        .panel ul ul li::marker {
+            font-size: 0.9em;
+        }
+       /* Ensure last element in panel has no bottom margin */
+       .panel > *:last-child {
+           margin-bottom: 0;
+       }
+      .accordion::after {
+        content: '\f078';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        transition: transform 0.3s;
+        margin-left: 10px;
+        font-size: 0.9em;
+      }
+      .accordion.active::after {
+        transform: rotate(-180deg);
+      }
+
+      /* Individual Recommendation Card Styles */
+      .recommendation-card {
+          background-color: var(--card-bg);
+          color: var(--primary);
+          cursor: pointer;
+          padding: 12px 18px;
+          width: 100%;
+          border: none;
+          border-left: 4px solid var(--accent);
+          text-align: left;
+          outline: none;
+          font-size: 0.95rem;
+          transition: background-color 0.3s ease, border-color 0.3s ease;
+          margin-top: 12px; /* Increased space */
+          border-radius: 5px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          box-sizing: border-box;
+          font-family: var(--font-family);
+      }
+       body.dark-mode .recommendation-card {
+         box-shadow: 0 2px 5px rgba(255, 255, 255, 0.08);
+         color: var(--text-dark); /* Ensure text is readable */
+       }
+      .recommendation-card b {
+          font-size: inherit;
+          font-weight: 600;
+          display: inline;
+          margin: 0;
+          margin-right: 5px; /* Space after icon/bold text */
+      }
+      .recommendation-card:hover {
+          background-color: var(--card-hover-bg);
+          border-left-color: #2980b9;
+      }
+       body.dark-mode .recommendation-card:hover {
+           border-left-color: #5dade2;
+       }
+      .recommendation-panel {
+          padding: 15px 18px 15px 22px;
+          display: none;
+          overflow: hidden;
+          background-color: var(--card-bg);
+          border: 1px solid var(--card-border-color);
+          border-top: none;
+          border-left: 4px solid var(--accent);
+          border-radius: 0 0 5px 5px;
+          margin-bottom: 0;
+          font-size: 0.9rem; /* Match panel font size */
+          animation: fadeInNested 0.5s ease-out;
+          width: 100%;
+          box-sizing: border-box;
+          line-height: 1.6; /* Improve readability */
+      }
+       body.dark-mode .recommendation-panel {
+           background-color: #2e2e2e;
+       }
+       @keyframes fadeInNested {
+        from { opacity: 0; transform: translateY(-5px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .recommendation-panel ul {
+          padding-left: 20px;
+          margin-top: 5px;
+          margin-bottom: 0;
+      }
+       .recommendation-panel ul li {
+         margin-bottom: 8px; /* Spacing */
+       }
+        .recommendation-panel ul li::marker {
+            color: var(--accent);
+            font-size: 0.9em;
+        }
+        .recommendation-panel ul li ul {
+            margin-top: 5px;
+            padding-left: 15px;
+        }
+        .recommendation-panel ul li ul li::marker {
+            font-size: 0.8em;
+        }
+       .recommendation-panel p {
+           padding-left: 0;
+           margin-top: 5px;
+           margin-bottom: 0;
+       }
+        /* Add specific style for the Theory/Insight markers if needed */
+       .recommendation-panel .insight-marker,
+       .recommendation-panel .theory-marker {
+           font-weight: bold;
+           margin-right: 5px;
+           color: var(--primary); /* Or specific colors */
+       }
+       body.dark-mode .recommendation-panel .insight-marker,
+       body.dark-mode .recommendation-panel .theory-marker {
+           color: var(--text-dark);
+       }
+
+
+      .recommendation-card::after {
+          content: '+';
+          font-weight: bold;
+          color: var(--accent);
+          transition: transform 0.3s ease-out;
+          font-size: 1.2em;
+          margin-left: 10px;
+      }
+      .recommendation-card.active::after {
+          content: '−';
+          transform: rotate(180deg);
+      }
+
+      /* KPI Table Styles */
+      .kpi-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0; /* More vertical space */
+      }
+      .kpi-table th, .kpi-table td {
+        border: 1px solid var(--card-border-color);
+        padding: 9px 12px; /* Increased padding */
+        text-align: left;
+        font-size: 0.9rem; /* Slightly larger */
+        font-family: var(--font-family);
+        vertical-align: top; /* Align content top */
+      }
+      .kpi-table th {
+        background-color: var(--secondary);
+        font-weight: 600;
+        font-family: var(--font-family);
+        color: var(--primary);
+      }
+       body.dark-mode .kpi-table th {
+           background-color: #4a4a4a;
+           color: var(--text-dark);
+       }
+       body.dark-mode .kpi-table td {
+           border-color: #444;
+       }
+
+      /* Scroll-to-top Button */
+      .scroll-top {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: var(--accent);
+        color: white;
+        padding: 10px 13px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+        z-index: 100;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      }
+      .scroll-top:hover {
+        background-color: #2980b9;
+        transform: scale(1.1);
+      }
+
+       /* General structure alignment */
+       #visual1, #visual2 {
+           width: 100%;
+       }
+       .recommendations-container {
+           margin-top: 25px;
+           border-top: 1px solid var(--card-border-color); /* Separator line */
+           padding-top: 15px;
+       }
+
+
+    </style>
+ </head>
+ <body>
+  <header id="top">
+      <a href="../index.html" class="header-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+      <h1>Customer Profitability & Segment Analysis</h1>
+      <button class="header-button" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Toggle Theme</button>
+  </header>
+
+  <section class="section-container">
+      <h2 class="main-heading">📊 Superstore Dashboard Analysis</h2>
+      <div class="content-box">
+          <h3>📦 Dataset Overview</h3>
+          <p>The analysis is based on the Tableau Superstore dataset, a comprehensive retail dataset that includes order-level data across the United States. It contains information on:</p>
+          <ul>
+            <li>Orders, Sales, Profit, Discount, Quantity</li>
+            <li>Product Categories, Sub-Categories</li>
+            <li>Customer Names, Segments, and Regions</li>
+            <li>Shipping Modes and Dates</li>
+          </ul>
+          <p>The dataset allows for exploration of both customer-level behavior and region-specific profitability trends.</p>
+          <h3>🛠 Tools Used</h3>
+          <ul>
+            <li><strong>Tableau:</strong> For interactive dashboards and visual storytelling</li>
+            <li><strong>Excel:</strong> For initial data understanding and structure review</li>
+            <li><strong>PowerPoint:</strong> For summarising insights into stakeholder-friendly presentations</li>
+          </ul>
+          <h3>🎯 Project Goal</h3>
+          <p>To uncover key customer and regional profitability drivers using visual analytics.</p>
+          <p>The primary aim is to:</p>
+          <ul>
+            <li>Identify high-value and loss-generating customers</li>
+            <li>Understand segment- and region-level efficiency</li>
+            <li>Enable actionable decisions based on real-time business KPIs like Profit, Sales, and Profit Ratio</li>
+          </ul>
+      </div>
+
+      <div id="visual1">
+          <h3 class="visual-heading"><i class="fas fa-users"></i>Visual 1: Customer Segment Profitability</h3>
+          <div class="image-box">
+              <img src="../assets/images/customer-segments-dashboard.png" alt="Customer Segment Profitability Dashboard">
+          </div>
+          <p class="dashboard-link">
+              <a href="https://public.tableau.com/app/profile/suchit.pathak/viz/SuperstoreCustomerDashboard_17453184546330/CustomerDashboard" target="_blank">Link to the Tableau Dashboard</a>
+          </p>
+          <button class="accordion">
+            <span style="margin-left: 0.5rem;">Summary, Insights & Recommendations</span>
+          </button>
+          <div class="panel">
+            <b>✅ Key Business Questions</b>
+            <ul>
+                 <li>Which regions contribute most to profitability, and which are underperforming?</li>
+                 <li>Who are the top customers in terms of revenue generation and profit contribution?</li>
+                 <li>Are there customers with high sales but negative profit margins?</li>
+                 <li>What is the distribution of customer sales and profit across the U.S.?</li>
+                 <li>How concentrated is customer profitability — do a few customers drive most of the business?</li>
+            </ul>
+
+            <b>📊 KPI Summary Table</b>
+            <table class="kpi-table">
+                <thead><tr><th>KPI</th><th>Value</th><th>Description</th></tr></thead>
+                 <tbody>
+                     <tr><td>🔝 Top Performing Region</td><td>West – $108,418 Profit</td><td>West recorded the highest overall profit, with a 14.9% profit ratio</td></tr>
+                     <tr><td>🧍‍♂️ Highest Customer Count</td><td>East – 10,618 Customers</td><td>East had the largest customer base, though lower efficiency in per-customer sales</td></tr>
+                     <tr><td>💸 Lowest Profit Ratio</td><td>Central – 7.9%</td><td>Central earned $39,706 profit on $501,239 sales, showing poor margin conversion</td></tr>
+                     <tr><td>⚠️ Top Customer Loss</td><td>-$6,527 on $4,406 sales</td><td>One customer generated the highest absolute loss with a -148% profit ratio</td></tr>
+                     <tr><td>🥇 Top Customer by Sales</td><td>Sean Miller – $25,043</td><td>Highest-grossing customer in terms of revenue</td></tr>
+                     <tr><td>💡 Avg. Sales per Customer (West)</td><td>$1,057.52</td><td>The West region has the highest sales per customer, showing strong purchase value</td></tr>
+                 </tbody>
+            </table>
+
+            <b>✅ Key Insights (Quantitative & Business-Centric)</b>
+            <ul>
+                <li><b>West Region Dominates in Profitability</b>
+                    <ul><li>Generated $725,457 in sales and $108,418 in profit</li><li>Achieved a 14.9% profit ratio, the highest among all regions</li><li>Indicates strong pricing, product mix, and customer behavior efficiency</li></ul>
+                </li>
+                <li><b>East Region Has High Volume, But Lower Efficiency</b>
+                    <ul><li>Recorded the highest customer count (10,618)</li><li>Despite $678,781 in sales, profit was only $91,522 → Profit ratio: 13.5%</li><li>Sales per customer is only $63.92, compared to $1,057.52 in the West</li></ul>
+                </li>
+                <li><b>Central Region Underperformance</b>
+                    <ul><li>Sales: $501,239 | Profit: $39,706 | Profit Ratio: 7.9%</li><li>Despite decent sales volume, profit margins are weak → possible issues with cost, returns, or product mix</li></ul>
+                </li>
+                 <li><b>Significant Loss-Making Customers Identified</b>
+                     <ul><li>Example: A customer with $4,406 in sales incurred - $6,527 in losses, i.e., -148% profit ratio</li><li>Such cases severely impact net profitability</li></ul>
+                 </li>
+                 <li><b>Top Customer Contribution is Disproportionately High</b>
+                     <ul><li>Sean Miller: $25,043 in sales, followed by Tamara Chand at ~$19K</li><li>Top 10 customers together drive >$130,000 in total sales, showcasing the Pareto principle (20% of customers = 80% of value)</li></ul>
+                 </li>
+                 <li><b>Visual Scatter of Sales vs Profit Reveals Anomalies</b>
+                     <ul><li>Clear cluster of loss-generating customers with sales > $3K</li><li>High sales ≠ High profit → highlighting operational inefficiencies, return/refund issues, or over-discounting</li></ul>
+                 </li>
+            </ul>
+
+            <div class="recommendations-container">
+                <b>💡 Detailed Recommendations (Actionable & Strategic)</b>
+                <button class="recommendation-card"><b>➡️ Replicate High-Margin Strategy from West Region</b></button>
+                <div class="recommendation-panel"><ul><li>Analyze product mix, delivery methods, discount policy, and customer loyalty initiatives in the West.</li><li>Apply similar strategies to Central and South to improve margin conversion.</li></ul></div>
+                <button class="recommendation-card"><b>➡️ Optimize East Region’s Customer Spend</b></button>
+                <div class="recommendation-panel"><ul><li>Sales per customer is low despite highest traffic.</li><li>Launch cross-selling bundles, minimum order discount triggers, and targeted loyalty offers to increase average order value.</li></ul></div>
+                <button class="recommendation-card"><b>➡️ Flag and Control Loss-Making Customer Profiles</b></button>
+                <div class="recommendation-panel"><ul><li>Identify customers with sales > $2K and profit < $0.</li><li>Review their order patterns, return rates, and discount usage.</li><li>Set a minimum margin enforcement rule on future sales to such profiles.</li></ul></div>
+                <button class="recommendation-card"><b>➡️ Segment and Nurture Top Performers</b></button>
+                <div class="recommendation-panel"><ul><li>Build a “High-Value Customer Program” for the top 10 clients (e.g., Sean Miller).</li><li>Offer exclusive previews, premium support, and early access to encourage retention and upsell opportunities.</li></ul></div>
+                 <button class="recommendation-card"><b>➡️ Review Central Region for Operational Inefficiencies</b></button>
+                 <div class="recommendation-panel"><ul><li>Despite generating over $500K in sales, the profit ratio is the lowest at 7.9%.</li><li>Audit logistics, fulfillment costs, or underperforming SKUs contributing to the low return.</li></ul></div>
+                 <button class="recommendation-card"><b>➡️ Enhance Visualization and Monitoring</b></button>
+                 <div class="recommendation-panel"><ul><li>Integrate a threshold-based KPI alert system within dashboards (e.g., red flags on negative-profit customers or regions).</li><li>This will support faster decision-making by sales managers and regional leads.</li></ul></div>
+            </div> </div> </div> <div id="visual2">
+          <h3 class="visual-heading"><i class="fas fa-map-marked-alt"></i> Visual 2: Regional Profitability Analysis</h3>
+          <div class="image-box">
+              <img src="../assets/images/regional-profitability-dashboard.png" alt="Regional Profitability Analysis Dashboard">
+          </div>
+           <p class="dashboard-link">
+              <a href="https://public.tableau.com/app/profile/suchit.pathak/viz/SuperStoreDashboardSalesPerformance/Dashboard6" target="_blank">Link to the Tableau Dashboard</a>
+           </p>
+           <button class="accordion">
+            <span style="margin-left: 0.5rem;">Summary, Insights & Recommendations</span>
+          </button>
+           <div class="panel">
+            <b>❓ Business Questions</b>
+             <ul>
+                 <li>Which shipping modes contribute most to profit, and which drain it?</li>
+                 <li>Which sub-categories generate losses despite high sales or quantity?</li>
+                 <li>Which states and cities are key profit drivers or loss centers?</li>
+                 <li>Do quantity and profit scale together across product types?</li>
+                 <li>Where should the company cut losses or reinvest to maximise returns?</li>
+             </ul>
+
+            <b>📊 KPI Summary Table</b>
+            <table class="kpi-table">
+                <thead><tr><th>KPI</th><th>Value</th><th>Description</th></tr></thead>
+                 <tbody>
+                     <tr><td>🚚 Best Ship Mode</td><td>Standard Class – $164,088</td><td>Most profitable and efficient, with 57.3% profit ratio</td></tr>
+                     <tr><td>⚠️ Least Profitable Ship Mode</td><td>Same Day – $15,891</td><td>Highest cost-to-serve; only 5.5% profit ratio</td></tr>
+                     <tr><td>🪑 Worst Sub-Category (Profit)</td><td>Tables – > -$17,000 loss</td><td>Major loss-maker due to deep discounting and poor unit margins</td></tr>
+                     <tr><td>📉 Highest Discount Sub-Category</td><td>Binders – Avg. 40%+ discount</td><td>High volume, but net loss due to aggressive price cuts</td></tr>
+                     <tr><td>🏆 Top State</td><td>California – ~$76,000 profit</td><td>Strong revenue-to-margin efficiency</td></tr>
+                     <tr><td>🔴 Worst State</td><td>Texas – ~$25,000 loss</td><td>High sales, but steep losses — poor cost control or product mix</td></tr>
+                     <tr><td>🏙 Top Profit City</td><td>New York City – $50,000+</td><td>Excellent conversion rates and high-value customers</td></tr>
+                     <tr><td>🏙 Top Loss City</td><td>Philadelphia – ~ -$13,838</td><td>Urban center with major leakage in profit</td></tr>
+                     <tr><td>📱 Top Performing Product</td><td>Phones – High volume + profit</td><td>Balanced unit economics, scalable profit source</td></tr>
+                 </tbody>
+            </table>
+
+            <b>📍 Detailed Insights</b>
+            <ul>
+                <li>
+                    <b>🔹 1. Shipping Mode Profitability Analysis</b>
+                    <ul>
+                        <li><span class="insight-marker">💡 Insight:</span> Standard Class yielded $164,088.79 in profit with a 57.3% profit ratio, making it the most cost-effective shipping method. In contrast, Same Day shipping contributed only $15,891.76 to profit with a 5.5% profit ratio. First Class and Second Class have moderate performance (~$49K and ~$57K profit respectively).</li>
+                        <li><span class="theory-marker">📊 Theory:</span> This reflects the cost-benefit imbalance in faster shipping methods. While customers may opt for quicker delivery, the operational costs (courier, fulfillment, urgency) erode profit margins. Standard Class offers scale efficiency due to batch processing and planned logistics.</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>🔹 2. Sub-Category Profitability Disparity</b>
+                    <ul>
+                        <li><span class="insight-marker">💡 Insight:</span> Tables show consistently negative profits exceeding -$17,000, despite moderate sales volume. Binders, although selling in high volume (~100,000+ units), generated net losses due to average discounting above 40%. Phones and Chairs showed positive margins and strong unit sales — ideal sub-categories for focus.</li>
+                        <li><span class="theory-marker">📊 Theory:</span> High volume does not guarantee profitability — especially when paired with high discounts or returns. Retailers should monitor margin per unit rather than sales volume alone. This is a classic Contribution Margin vs Gross Sales dilemma — focusing solely on revenue can hide inefficient product lines.</li>
+                   </ul>
+                </li>
+                <li>
+                    <b>🔹 3. State-Level Profitability Breakdown</b>
+                    <ul>
+                         <li><span class="insight-marker">💡 Insight:</span> California ($76K) and New York ($70K) delivered the highest profits, despite high operational exposure. Texas (~ -$25K) and Illinois (~ -$16K) produced the highest losses among all states. Interestingly, these loss-making states also show high sales, which highlights an issue not of volume, but of margins and cost structure.</li>
+                         <li><span class="theory-marker">📊 Theory:</span> This follows Pareto leakage in geographic strategy — some high-volume markets may leak profit due to:
+                            <ul>
+                                <li>Excessive discounting</li>
+                                <li>Higher return rates</li>
+                                <li>Logistics inefficiency</li>
+                            <li>Underperforming SKUs specific to the region</li>
+                            </ul>
+                            These states require a cost-to-serve analysis to understand why profits are eroded despite strong revenue.
+                         </li>
+                    </ul>
+                </li>
+                <li>
+                    <b>🔹 4. City-Level Profit Drivers & Bleeders</b>
+                    <ul>
+                         <li><span class="insight-marker">💡 Insight:</span> New York City topped profitability with over $50,000 in profit, making it a strategic location for expansion and customer loyalty efforts. Philadelphia led losses with - $13,838, followed by cities like Houston and San Antonio.</li>
+                         <li><span class="theory-marker">📊 Theory:</span> Urban centers like NYC may support premium pricing and high order values, justifying shipping and operational overhead. Loss cities could reflect localized pricing misalignment, or frequent low-margin bulk orders.</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>🔹 5. Quantity vs Profit Relationship</b>
+                    <ul>
+                         <li><span class="insight-marker">💡 Insight:</span> Phones and Chairs showed high quantity and high profit — indicating efficient volume-driven profitability. Tables and Binders, however, showed high sales but negative profits, breaking the expected correlation.</li>
+                         <li><span class="theory-marker">📊 Theory:</span> This challenges the assumption of scale economies — without margin control, higher sales can actually lead to loss. This is indicative of over-saturation, deep discounting, or ineffective upselling.</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="recommendations-container">
+                <b>💡 Detailed Recommendations</b>
+                 <button class="recommendation-card"><b>✅ 1. Refine Shipping Strategy for Profit Optimization</b></button>
+                 <div class="recommendation-panel"><ul><li>Focus on Standard Class as the default for non-urgent orders.</li><li>A 10% volume shift from Same Day to Standard could save $20–30K annually, assuming similar demand profiles.</li><li>Cap Same Day shipping usage based on:<ul><li>Order value thresholds</li><li>Customer tier (e.g., only for VIPs)</li></ul></li><li>📌 Applies the principle of “Differential Costing” in logistics management.</li></ul></div>
+                 <button class="recommendation-card"><b>✅ 2. Restructure Discount Strategy in Key Sub-Categories</b></button>
+                 <div class="recommendation-panel"><ul><li>Binders and Tables should be reviewed for:<ul><li>Discount caps (e.g., max 15–20%)</li><li>SKU rationalization</li></ul></li><li>Reprice or bundle loss-making items with profitable categories like Phones.</li><li>📌 Supports Revenue Management strategy: “Discount only what you can afford to lose.”</li></ul></div>
+                 <button class="recommendation-card"><b>✅ 3. Prioritize High-Performing States and Rationalize Low-Profit Zones</b></button>
+                 <div class="recommendation-panel"><ul><li>Expand campaigns and inventory in California & New York with premium offers.</li><li>For Texas, Illinois, Colorado:<ul><li>Perform return/refund audit</li><li>Consider regional pricing adjustments</li></ul></li><li>📌 Regionalization strategy – “Act Local, Price Smart.”</li></ul></div>
+                 <button class="recommendation-card"><b>✅ 4. Launch City-Specific Campaigns</b></button>
+                 <div class="recommendation-panel"><ul><li>Target New York City, San Francisco, Seattle for:<ul><li>Loyalty programs</li><li>Personalized cross-sell offers</li></ul></li><li>Launch turnaround campaigns in Philadelphia using:<ul><li>Minimum order values</li><li>Controlled discount policies</li></ul></li><li>📌 Utilizes Geo-Targeting and Micro-Marketing strategies.</li></ul></div>
+                 <button class="recommendation-card"><b>✅ 5. Align Product Strategy with Profit Metrics</b></button>
+                 <div class="recommendation-panel"><ul><li>Promote high-profit, high-volume categories (Phones, Chairs) aggressively.</li><li>Re-evaluate the viability of low-profit, high-volume categories (Binders) and high-loss categories (Tables).</li><li>Consider discontinuing or drastically changing the go-to-market for products consistently showing losses.</li><li>📌 Focuses on "Profit Per Unit" metrics over sheer sales volume.</li></ul></div>
+            </div>
+          </div>
+      </div>
+
+      <a href="#top" class="scroll-top"><i class="fas fa-arrow-up"></i></a>
+
+  </section>
+
+  <footer>
+      <p>&copy; 2023 Suchit Pathak. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+  <script>
+      // Accordion functionality
+      var accordions = document.getElementsByClassName("accordion");
+      for (var i = 0; i < accordions.length; i++) {
+          accordions[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var panel = this.nextElementSibling;
+              if (panel.style.display === "block") {
+                  panel.style.display = "none";
+              } else {
+                  panel.style.display = "block";
+              }
+          });
+      }
+
+       // Nested Recommendation Accordion functionality
+      var recommendationCards = document.getElementsByClassName("recommendation-card");
+      for (var i = 0; i < recommendationCards.length; i++) {
+          recommendationCards[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var panel = this.nextElementSibling;
+              if (panel.style.display === "block") {
+                  panel.style.display = "none";
+              } else {
+                  panel.style.display = "block";
+              }
+          });
+      }
+
+      // Medium Zoom for images
+      mediumZoom('.image-box img', {
+          margin: 50,
+          background: 'rgba(0, 0, 0, 0.7)'
+      });
+
+      // Dark mode toggle
+      function toggleTheme() {
+          document.body.classList.toggle('dark-mode');
+      }
+
+  </script>
+
+
+</body></html>
+
+

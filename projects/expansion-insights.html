@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expansion Insights | Suchit Pathak</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --bg-light: #f9f9f9;
+      --text-light: #333;
+      --bg-dark: #222;
+      --text-dark: #eee;
+      --primary: #2c3e50;
+      --secondary: #ecf0f1;
+      --accent: #3498db;
+      --font-family: 'Times New Roman', Times, serif;
+      --header-footer-bg: #3498db;
+    }
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      line-height: 1.8;
+      scroll-behavior: smooth;
+      transition: background 0.3s, color 0.3s;
+      font-size: 16px;
+    }
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    header, footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--header-footer-bg);
+      color: white;
+      padding: 20px;
+    }
+    header h1, footer p {
+      margin: 0;
+      font-size: 2.2rem;
+      flex-grow: 1;
+      text-align: center;
+      font-weight: 600;
+    }
+    footer p {
+      font-size: 1rem;
+    }
+    .header-button {
+      background-color: white;
+      color: var(--primary);
+      padding: 10px 18px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      margin: 0 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .header-button:hover {
+      background-color: var(--accent);
+      color: white;
+    }
+    nav.sidebar {
+      position: fixed;
+      top: 120px;
+      left: 20px;
+      background: var(--secondary);
+      border: 1px solid #ddd;
+      padding: 15px 12px;
+      border-radius: 10px;
+      font-size: 1rem;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav.sidebar a {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 12px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav.sidebar a:hover {
+      color: var(--accent);
+    }
+    .section-container {
+      padding: 80px 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .centered-heading {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      position: relative;
+    }
+    .centered-heading::before, .centered-heading::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background-color: var(--accent);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .centered-heading::after {
+      width: 30px;
+      bottom: -15px;
+    }
+    .image-box {
+      text-align: center;
+    }
+    .image-box img {
+      width: 80%;
+      max-width: 1000px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      display: inline-block;
+      margin: 40px auto;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+    .image-box img.enlarged {
+      width: 95%;
+      max-width: 1200px;
+      transform: scale(1.05);
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.05);
+      z-index: 1001;
+    }
+    .accordion {
+      background-color: var(--secondary);
+      color: var(--primary);
+      cursor: pointer;
+      padding: 16px 22px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 1.1rem;
+      transition: background-color 0.4s ease;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .accordion:hover {
+      background-color: #e0e0e0;
+    }
+    .panel {
+      padding: 25px;
+      display: none;
+      overflow: hidden;
+      background-color: #fdfdfd;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 40px;
+      font-size: 0.95rem;
+      animation: fadeIn 1s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .panel pre {
+      white-space: pre-wrap;
+      font-family: var(--font-family);
+    }
+    .panel b {
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+    .panel h3 {
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+    .panel i {
+      color: #777;
+    }
+    .panel ul li {
+      list-style-type: disc;
+      margin-bottom: 8px;
+    }
+    .panel ul {
+      padding-left: 20px;
+    }
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--accent);
+      color: white;
+      padding: 14px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      margin-bottom: 20px;
+    }
+    .scroll-top:hover {
+      background-color: #2980b9;
+    }
+    .accordion::after {
+      content: '\f054';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      transition: transform 0.3s;
+    }
+    .accordion.active::after {
+      transform: rotate(90deg);
+    }
+    .content-box h3 {
+      font-size: 1.4rem;
+    }
+    .content-box p, .content-box li {
+      font-size: 1.2rem;
+    }
+    .kpi-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    .kpi-table th, .kpi-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    .kpi-table th {
+      background-color: var(--secondary);
+      font-weight: 600;
+    }
+    .kpi-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .kpi-card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="header-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <h1>Expansion Insights Project</h1>
+    <button class="header-button" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Toggle Theme</button>
+  </header>
+
+  <nav class="sidebar">
+    <a href="#visual1"><i class="fas fa-bread-slice"></i> Visual 1</a>
+    <a href="#visual2"><i class="fas fa-calendar-alt"></i> Visual 2</a>
+    <a href="#visual3"><i class="fas fa-chart-line"></i> Visual 3</a>
+  </nav>
+
+  <section class="section-container">
+    <h2 class="centered-heading">📊 Revenue & Sales Dashboard Analysis</h2>
+    <div class="content-box">
+      <h3>📁 Dataset Overview</h3>
+      <p>This project explores a two-year POS dataset (2021–2022) for a bakery chain, focusing on revenue trends, product-level sales analysis, and seasonal behavior insights to support strategic business expansion.</p>
+      <h3>🛠 Tools Used</h3>
+      <ul>
+        <li><strong>Excel:</strong> Data preprocessing & calculations</li>
+        <li><strong>Tableau:</strong> Dashboarding & visual storytelling</li>
+      </ul>
+      <h3>🔍 Project Goal</h3>
+      <p>Understand revenue distribution by product and time, uncover peak-performing items, evaluate day-level and seasonal trends, and recommend actionable strategies for profitability and scaling.</p>
+    </div>
+
+    <div id="visual1">
+      <h3 class="centered-heading">🍞 Visual 1: Product & Revenue Overview</h3>
+      <div class="image-box">
+        <img src="../assets/images/revenue-sales-overview.png" alt="Revenue and Sales Overview Chart" onclick="enlargeImage(this)">
+      </div>
+      <button class="accordion">▶ Summary, Insights & Recommendations</button>
+      <div class="panel">
+        <h3>KPI Metrics Overview</h3>
+        <table class="kpi-table">
+          <tr>
+            <th>KPI</th>
+            <th>Value</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><i class="fas fa-chart-line"></i> Top Revenue Product</td>
+            <td>Traditional Baguette: $146,311.45</td>
+            <td>Highest revenue generated product, significantly outperforming others.</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-calendar-alt"></i> Highest Daily Revenue</td>
+            <td>Sunday: $127,387.18</td>
+            <td>Day with the highest total revenue, indicating strong weekend sales.</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-shopping-cart"></i> Top Quantity Sold</td>
+            <td>Traditional Baguette: 118,723 units</td>
+            <td>Product with the most units sold, showing high demand.</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-chart-area"></i> Monthly Growth (Baguette)</td>
+            <td>137% (Jan to May)</td>
+            <td>Percentage growth in revenue from January to May, indicating strong upward trend.</td>
+          </tr>
+        </table>
+        <h3>Insights</h3>
+        <p><i class="fas fa-lightbulb"></i> <b>Revenue Concentration:</b> Revenue is heavily concentrated in the top 3 products, contributing over 60% of total product revenue. The Traditional Baguette alone accounts for more than 40% of all product revenue, with $146,311.45 out of a total of approximately $360,000.</p>
+        <p><i class="fas fa-tags"></i> <b>Premium Positioning:</b> Items like Formule Sandwich generate higher revenue ($36,128.50) despite lower quantity (~8,500 units), indicating a higher average price point and potential for premium positioning.</p>
+        <p><i class="fas fa-clock"></i> <b>Weekend Peak:</b> Sundays contribute the highest daily revenue ($127,387.18), indicating strong customer behavior patterns tied to leisure or family gatherings.</p>
+        <p><i class="fas fa-arrow-up"></i> <b>Consistent Growth:</b> The Traditional Baguette shows a 137% revenue increase from January to May, signaling loyalty or seasonal demand increases.</p>
+        <h3>Recommendations</h3>
+        <p>1. <i class="fas fa-bullhorn"></i> <b>Maximize Sunday Sales:</b> Launch Sunday-specific campaigns, such as discount combos or loyalty offers, to capitalize on the peak revenue day. Given the $127,387.18 revenue, increasing this by even 10% could add $12,700+ in revenue.</p>
+        <p>2. <i class="fas fa-rocket"></i> <b>Scale Top Sellers:</b> Focus on top sellers like the Traditional Baguette, Croissant, and Formule Sandwich for marketing and supply chain prioritization. The Baguette alone contributes $146,311.45, so even a 5% increase in sales would significantly impact revenue.</p>
+        <p>3. <i class="fas fa-search"></i> <b>Investigate Low-Revenue Products:</b> Analyze products with low revenue and quantity, such as Tartelette and Grand Far Breton, for potential profit margins or alternative formats. If these can be improved, it can open up a wider revenue stream.</p>
+        <p>4. <i class="fas fa-dollar-sign"></i> <b>Adjust Pricing Strategy:</b> Use value-based pricing for items like Formule Sandwich and revisit pricing elasticity for lagging items. A 10% adjustment in pricing could lead to a 5-15% change in revenue, depending on elasticity.</p>
+        <p>5. <i class="fas fa-boxes"></i> <b>Align Inventory:</b> Boost inventory and staffing for weekend peaks, especially Sunday, and explore flash discounts midweek to flatten the dip. Proper alignment can reduce lost sales and increase efficiency.</p>
+        </pre>
+      </div>
+    </div>
+    <div id="visual2">
+      <h3 class="centered-heading">📅 Visual 2: Monthly Growth & Seasonality</h3>
+      <div class="image-box">
+        <img src="../assets/images/monthly-growth-overview.png" alt="Monthly Growth Overview" onclick="enlargeImage(this)">
+      </div>
+      <p style="text-align:center">📈 <a href="../assets/images/revenue-percent-detailed.png" target="_blank">View Revenue Percent Change</a></p>
+      <button class="accordion">▶ Summary, Insights & Recommendations</button>
+      <div class="panel">
+        <h3>KPI Highlights (2021 & 2022)</h3>
+        <table class="kpi-table">
+          <tr>
+            <th>KPI</th>
+            <th>Value</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><i class="fas fa-arrow-up"></i> Highest Positive Change</td>
+            <td>+85.18% (Aug 2022)</td>
+            <td>Highest monthly revenue increase, indicating a strong seasonal peak.</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-arrow-down"></i> Steepest Negative Change</td>
+            <td>-59.54% (Sep 2022)</td>
+            <td>Steepest drop in monthly revenue, showing a significant seasonal decline.</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-sync-alt"></i> Consistent Drop Month</td>
+            <td>September (2021 & 2022)</td>
+            <td>Consistent monthly revenue decline, highlighting a recurring seasonal pattern.</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-sync-alt"></i> Positive Momentum Month</td>
+            <td>April & May (Both Years)</td>
+            <td>Months with consistent growth, indicating a reliable mid-year peak.</td>
+          </tr>
+        </table>
+        <h3>Insights</h3>
+        <p>1. <i class="fas fa-chart-line"></i> <b>August Volatility:</b> August shows the highest volatility, with a +85.18% increase in 2022, followed by a -59.54% drop in September. This indicates a high-risk, high-reward period.</p>
+        <p>2. <i class="fas fa-calendar-alt"></i> <b>Consistent Growth:</b> February to May shows consistent growth, with April and May consistently showing a 20%+ increase, indicating a reliable mid-year growth phase.</p>
+        <p>3. <i class="fas fa-exclamation-triangle"></i> <b>High Variability:</b> January and June have high variability, with January 2022 starting with a -17.6% dip and June consistently showing a 15%+ contraction.</p>
+        <p>4. <i class="fas fa-chart-bar"></i> <b>Weak Q4:</b> Q4 recovery is weak or flat, with October to December showing negligible or negative percent change, indicating a consistent end-of-year slump.</p>
+        <h3>Recommendations</h3>
+        <p>1. <i class="fas fa-bullhorn"></i> <b>Capitalize on August:</b> Use targeted ads and bundle offers leading up to and during August to capitalize on the 85%+ MoM growth. Even a 20% increase in sales during this period could significantly boost annual revenue.</p>
+        <p>2. <i class="fas fa-shield-alt"></i> <b>Manage September Decline:</b> Proactively manage the September decline with clearance sales and re-engagement campaigns. Given the 59%+ drop, preemptive actions can mitigate significant revenue loss.</p>
+        <p>3. <i class="fas fa-gift"></i> <b>Stabilize Q1:</b> Stabilize Q1 with incentives and discounts to counter the January and February drops. A 10% increase in sales during these months could offset the typical seasonal decline.</p>
+        <p>4. <i class="fas fa-chart-area"></i> <b>Forecast with Dips:</b> Use seasonal dips for forecasting and planning, especially for budgeting and store launches. Accurate prediction can help manage inventory and staffing effectively.</p>
+        </pre>
+      </div>
+    </div>
+    <div id="visual3">
+      <h3 class="centered-heading">📈 Visual 3: Revenue Trend & Q4 Forecast</h3>
+      <div class="image-box">
+        <img src="../assets/images/revenue-trend-forecast.png" alt="Forecast Chart" onclick="enlargeImage(this)">
+      </div>
+      <button class="accordion">▶ Summary, Insights & Recommendations</button>
+      <div class="panel">
+        <h3>Key Performance Indicators (KPIs):</h3>
+        <table class="kpi-table">
+          <tr>
+            <th>KPI</th>
+            <th>Value</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><i class="fas fa-chart-line"></i> Monthly Revenue (Max)</td>
+            <td>$54,230.55 (Aug 2022)</td>
+            <td>Highest monthly revenue, indicating a peak in seasonal demand.</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-chart-line"></i> Monthly Revenue (Min)</td>
+            <td>$15,461.17 (Dec 2020)</td>
+            <td>Lowest monthly revenue, showing a significant seasonal low.</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-chart-line"></i> Q4 2022 Forecast</td>
+            <td>$67,420.87</td>
+            <td>Forecasted quarterly revenue, indicating a seasonal dip compared to Q3.</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-shopping-cart"></i> Monthly Quantity (Max)</td>
+            <td>33,703 units (Aug 2022)</td>
+            <td>Highest units sold in a month, aligning with revenue peaks.</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-shopping-cart"></i> Monthly Quantity (Min)</td>
+            <td>9,056 units (Dec 2021)</td>
+            <td>Lowest units sold in a month, reflecting seasonal low demand.</td>
+          </tr>
+        </table>
+        <h3>Insights</h3>
+        <p>1. <i class="fas fa-chart-line"></i> <b>Revenue Peak:</b> Revenue peaked in August 2022 at $54,230.55, a 250% increase from December 2020, showing a strong seasonal demand pattern.</p>
+        <p>2. <i class="fas fa-shopping-cart"></i> <b>Sales Correlation:</b> Sales quantity follows revenue trends, with August 2022 having the highest units sold (33,703), indicating a direct correlation between units sold and revenue.</p>
+        <p>3. <i class="fas fa-chart-area"></i> <b>Q4 Decline:</b> Q4 2022 forecast is $67,420.87, 45% lower than Q3, indicating a consistent seasonal dip in demand.</p>
+        <h3>Recommendations</h3>
+        <p>1. <i class="fas fa-bullhorn"></i> <b>Focus on Q3:</b> Focus marketing efforts on Q3, especially August, to capitalize on peak demand. A 10% increase in sales during this period could significantly boost annual revenue.</p>
+        <p>2. <i class="fas fa-snowflake"></i> <b>Analyze Winter Dips:</b> Analyze winter dips and introduce holiday offers to mitigate the seasonal low. Even a 10% reduction in the Q4 decline could significantly improve quarterly performance.</p>
+        <p>3. <i class="fas fa-calendar-check"></i> <b>Use Q4 for Planning:</b> Use Q4 for planning and inventory management, given the seasonal decline. Proper resource planning can reduce costs and improve efficiency.</p>
+        <p>4. <i class="fas fa-chart-line"></i> <b>Refine Forecasting:</b> Refine forecasting with granular customer data to improve prediction accuracy. Accurate forecasting can help manage inventory and staffing effectively, reducing losses and increasing profitability.</p>
+        </pre>
+      </div>
+    </div>
+  </section>
+  <a href="#top" class="scroll-top"><i class="fas fa-arrow-up"></i></a>
+  <footer>
+    <p>© 2025 Suchit Pathak | Data Analytics Portfolio</p>
+    <p>Tools: Excel, Tableau | Focus: Retail Expansion & Sales Trends</p>
+  </footer>
+  <script>
+    const toggleTheme = () => {
+      document.body.classList.toggle('dark-mode');
+    };
+    const accordions = document.querySelectorAll(".accordion");
+    accordions.forEach(btn => {
+      btn.addEventListener("click", function () {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+      });
+    });
+    function enlargeImage(img) {
+      img.classList.toggle('enlarged');
+    }
+  </script>
+</body>
+</html>
+
+
+
