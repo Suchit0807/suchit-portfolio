@@ -15,7 +15,7 @@
         }
 
         footer {
-            background: #3498db; /* Consistent blue color */
+            background: #1e3c72; /* Darker consistent blue */
             color: white;
             padding: 20px;
             text-align: center;
@@ -407,7 +407,7 @@
 
         /* Project styles remain the same */
         #projects {
-            padding: 40px 20px;
+            padding: 40px 20px 20px 20px; /* Adjusted bottom padding */
             max-width: 1000px;
             margin: auto;
         }
@@ -466,6 +466,102 @@
              color: #3498db;
              text-decoration: underline;
          }
+
+
+        /* --- Blog Section Styles --- */
+        #blogs {
+            padding: 20px 20px 40px 20px; /* Adjusted top padding to follow projects */
+            max-width: 1000px; /* Match projects width */
+            margin: auto;
+             background-color: #f4f7f9; /* Match body background */
+        }
+
+         #blogs h2 {
+             font-size: 2rem;
+             color: #2c3e50;
+             margin-bottom: 30px;
+             text-align: center;
+         }
+
+         .blog-cards-container {
+             /* Grid layout for multiple cards */
+             display: grid;
+             /* 2 columns minimum 300px, max 1fr */
+             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+             gap: 25px; /* Space between blog cards */
+         }
+
+         .blog-card {
+             /* Style as a card within the grid */
+             display: flex; /* Use flexbox for internal layout */
+             flex-direction: column; /* Stack content vertically */
+             background: white;
+             border-radius: 8px; /* Rounded corners */
+             padding: 20px; /* Internal padding */
+             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+             text-decoration: none; /* Remove underline from link */
+             color: #333; /* Default text color */
+             transition: transform 0.3s ease, box-shadow 0.3s ease;
+             position: relative;
+             overflow: hidden;
+             box-sizing: border-box;
+             /* Removed max-width and margin: auto as grid handles layout */
+             height: 100%; /* Ensure cards in a row have similar height if content varies */
+         }
+
+         .blog-card:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+         }
+
+         .blog-card h3 {
+             margin: 0 0 8px 0; /* Space below title */
+             /* --- Adjusted Heading Style --- */
+             font-size: 1.2rem; /* Title font size */
+             color: #333; /* Darker color for title */
+             font-weight: 700; /* Explicitly bold */
+             line-height: 1.4;
+             /* --- End Adjusted Heading Style --- */
+         }
+
+         .blog-excerpt {
+             /* --- Adjusted Excerpt Style --- */
+             font-size: 0.95rem; /* Excerpt font size */
+             color: #666; /* Slightly lighter color for excerpt */
+             margin-bottom: 15px; /* Space below excerpt */
+             flex-grow: 1; /* Allow excerpt to take up available space */
+             /* --- End Adjusted Excerpt Style --- */
+             /* Optional: Limit lines if you want consistent height */
+             /*
+             display: -webkit-box;
+             -webkit-line-clamp: 3; // Show only 3 lines
+             -webkit-box-orient: vertical;
+             overflow: hidden;
+             */
+         }
+
+         .blog-meta {
+             font-size: 0.85rem;
+             color: #777;
+             text-align: right; /* Align meta text to the right */
+             margin-top: auto; /* Push meta to the bottom using flex */
+             margin-bottom: 0;
+         }
+
+         /* --- Blog Tag Style --- */
+         .blog-tag {
+             display: inline-block; /* Allows padding and margin */
+             background-color: #2ecc71; /* Green color - adjust as needed */
+             color: white; /* White text on the tag */
+             padding: 3px 8px; /* Small padding inside tag */
+             font-size: 0.7em; /* Small text size */
+             font-weight: bold; /* Bold text */
+             border-radius: 3px; /* Slightly rounded corners */
+             margin-bottom: 10px; /* Space between tag and title */
+             text-transform: uppercase; /* Uppercase text */
+             letter-spacing: 0.5px; /* Optional: slight letter spacing */
+         }
+         /* --- End Blog Tag Style --- */
 
 
         /* Contact styles remain the same */
@@ -639,6 +735,27 @@
                    text-align: center;
                }
 
+               /* Blog cards responsive - grid layout adjustments */
+                .blog-cards-container {
+                     /* Grid columns stack on small screens */
+                     grid-template-columns: 1fr;
+                     gap: 15px; /* Adjust gap */
+                }
+
+                .blog-card {
+                     /* Adjust padding on small screens */
+                     padding: 15px; /* Slightly less padding */
+                     max-width: 100%; /* Ensure it takes full width */
+                }
+
+                .blog-card h3 {
+                     font-size: 1.1rem; /* Smaller title in grid card */
+                }
+
+                .blog-excerpt {
+                     font-size: 0.9rem; /* Smaller excerpt in grid card */
+                }
+
 
                /* Modal and Popup responsive adjustments */
                .modal-content {
@@ -778,7 +895,17 @@
         </div>
     </section>
 
-    <section id="contact">
+    <section id="blogs">
+         <h2>Latest Blog Posts</h2>
+         <div class="blog-cards-container">
+             <a href="projects/superstore-blog.html" class="blog-card">
+                 <span class="blog-tag">Data Visualisation</span>
+                 <h3>Behind the Dashboard: My Workflow Analyzing the Superstore Dataset</h3>
+                 <p class="blog-excerpt">Exploring the process, techniques, and considerations when working with retail sales data using Python, SQL, and Tableau.</p>
+                 <p class="blog-meta"><small>By Suchit Pathak | April 2025</small></p> </a>
+             </div>
+    </section>
+     <section id="contact">
         <h2>Contact Me</h2>
         <p>Let's connect! Feel free to reach out via email or LinkedIn.</p>
         <p style="color: #3498db; font-weight: 500;">suchitpathak0807@gmail.com</p>
