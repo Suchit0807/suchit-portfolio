@@ -28,7 +28,6 @@ Here's a look at the projects and their accompanying technical blog posts housed
 * **Technologies:** Python (Pandas), Excel, Tableau, Tableau Calculated Fields, HTML, CSS, JavaScript.
 * **Live Dashboard:** [View HR Dashboard on Tableau Public](https://public.tableau.com/app/profile/suchit.pathak/viz/HRDashboard_17468779578640/HRDashboardSummary)
 * **Technical Blog Post:** [Read the HR Analytics Blog Post](https://suchit0807.github.io/suchit-portfolio/projects/hr-dashboard-blog.html)
-* **Project Files:** The source code for the blog post is included at the link above. If you have specific Tableau workbook files or data processing scripts related to this project within `/projects/` or other directories you want to highlight, you can add links here.
 
 ---
 
@@ -38,7 +37,6 @@ Here's a look at the projects and their accompanying technical blog posts housed
 * **Technologies:** Tableau, (potentially Python/Excel for data prep), HTML, CSS, JavaScript.
 * **Live Dashboard:** [View Sales Performance Dashboard on Tableau Public](https://public.tableau.com/app/profile/suchit.pathak/viz/SuperStoreDashboardSalesPerformance/Dashboard6)
 * **Technical Blog Post:** [Read the Superstore Sales Blog Post](https://suchit0807.github.io/suchit-portfolio/projects/superstore-blog.html)
-* **Project Files:** If you have specific project files for this dashboard (beyond the data prep), mention their location within `/projects/`.
 
 ---
 
@@ -48,7 +46,6 @@ Here's a look at the projects and their accompanying technical blog posts housed
 * **Technologies:** Tableau, (potentially Python/Excel for data prep), HTML, CSS, JavaScript.
 * **Live Dashboard:** [View Customer Dashboard on Tableau Public](https://public.tableau.com/app/profile/suchit.pathak/viz/SuperstoreCustomerDashboard_17453184546330/CustomerDashboard)
 * **Technical Blog Post:** (If you have a separate blog post specifically for the Customer Dashboard, you can add a link here following the format above. Otherwise, remove this line.)
-* **Project Files:** If you have specific project files for this dashboard (beyond the data prep), mention their location within `/projects/`.
 
 ---
 
@@ -59,7 +56,7 @@ Here's a look at the projects and their accompanying technical blog posts housed
 * **Tools Used:** Excel (Data preprocessing & calculations), Tableau (Dashboarding & visual storytelling).
 * **Project Goal:** To uncover insights for revenue optimization and scalable growth strategies based on detailed sales analysis.
 * **Live Dashboard:** [View Expansion Insights Dashboard on Tableau Public](https://public.tableau.com/authoring/Activity_17351610903030/Story1#1)
-* **Project Files:** If you have specific data files, analysis scripts, or HTML outputs (like `projects/expansion-insights.html` when you create the blog post) for this project within `/projects/` or other directories, you can add links here.
+* **Technical Blog Post:** (If you create a blog post for the Expansion project later, you can add a link here following the format above. Otherwise, remove this line.)
 
 ---
 
@@ -79,10 +76,10 @@ This portfolio demonstrates proficiency in:
 
 ## ▶️ How to Navigate and View
 
-1.  **To Read a Blog Post:** Click on the "Read the [Project Name] Blog Post" link under the relevant project section above. This link now uses your GitHub Pages domain to ensure it opens the rendered web page.
+1.  **To Read a Blog Post:** Click on the "Read the [Project Name] Blog Post" link under the relevant project section above. This link will take you directly to the rendered web page hosted on your GitHub Pages site.
 2.  **To View a Live Dashboard/Output:** Click on the "View [Dashboard Name] on Tableau Public" or other live/output links under the relevant project section. This will take you to the external hosting platform or open the HTML output file directly in the browser.
-3.  **To Explore Code/Files:** Browse the directories in this repository on GitHub, particularly the `/projects` folder. You can also clone the repository using `git clone [repository URL]` to explore the files locally.
-4.  **View Main Portfolio Page:** Open the `Index.html` file located in the root of the repository in your web browser to see the main portfolio landing page.
+3.  **To Explore Code/Files:** Browse the directories in this repository on GitHub, particularly the `/projects` folder. You can also clone the repository using `git clone [repository URL]` and explore the files locally.
+4.  **View Main Portfolio Page:** Open the `Index.html` file located in the root of the repository in your web browser to see the main portfolio landing page for this portfolio.
 
 ---
 
