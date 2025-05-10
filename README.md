@@ -38,7 +38,7 @@ Here's a look at the projects and their accompanying technical blog posts housed
 * **Technologies:** Tableau, (potentially Python/Excel for data prep), HTML, CSS, JavaScript.
 * **Live Dashboard:** [View Sales Performance Dashboard on Tableau Public](https://public.tableau.com/app/profile/suchit.pathak/viz/SuperStoreDashboardSalesPerformance/Dashboard6)
 * **Technical Blog Post:** [Read the Superstore Sales Blog Post](projects/superstore-blog.html)
-* **Project Output (HTML):** [View Superstore Dashboard HTML Output](projects/superstore-dashboard.html) *(Linking to the HTML file in your repo)*
+* **Project Files:** If you have specific project files for this dashboard (beyond the data prep), mention their location within `/projects/`.
 
 ---
 
@@ -47,7 +47,7 @@ Here's a look at the projects and their accompanying technical blog posts housed
 * **Description:** An analysis of the Superstore dataset specifically focusing on customer segmentation and behavior. This dashboard visualizes insights related to customer purchasing patterns, lifetime value, and demographic distribution to help inform customer-centric strategies.
 * **Technologies:** Tableau, (potentially Python/Excel for data prep), HTML, CSS, JavaScript.
 * **Live Dashboard:** [View Customer Dashboard on Tableau Public](https://public.tableau.com/app/profile/suchit.pathak/viz/SuperstoreCustomerDashboard_17453184546330/CustomerDashboard)
-* **Technical Blog Post:** (If you have a separate blog post for the Customer Dashboard, add link here. Otherwise, you can remove this line.)
+* **Technical Blog Post:** (If you have a separate blog post specifically for the Customer Dashboard, you can add a link here following the format above. Otherwise, remove this line.)
 * **Project Files:** If you have specific project files for this dashboard (beyond the data prep), mention their location within `/projects/`.
 
 ---
@@ -56,11 +56,10 @@ Here's a look at the projects and their accompanying technical blog posts housed
 
 * **Description:** This project analyzes a two-year Point-of-Sale (POS) dataset (2021–2022) for a bakery chain. The focus is on understanding revenue distribution by product and time, identifying peak-performing items, evaluating day-level and seasonal sales trends, and providing actionable recommendations to support strategic business expansion and scaling.
 * **Dataset:** Two-year POS data (2021–2022) for a bakery chain.
-* **Tools Used:** Excel (Data preprocessing & calculations), Tableau (Dashboarding & visual storytelling), HTML, CSS, JavaScript (for the blog).
+* **Tools Used:** Excel (Data preprocessing & calculations), Tableau (Dashboarding & visual storytelling).
 * **Project Goal:** To uncover insights for revenue optimization and scalable growth strategies based on detailed sales analysis.
 * **Live Dashboard:** [View Expansion Insights Dashboard on Tableau Public](https://public.tableau.com/authoring/Activity_17351610903030/Story1#1)
-* **Technical Blog Post:** [Read the Expansion Insights Blog Post](projects/expansion-insights.html)
-* **Project Files:** The source code for the blog post is included at the link above. Please let me know if you have specific data files or analysis scripts for this project within `/projects/` that you'd like to link directly.
+* **Project Files:** If you have specific data files, analysis scripts, or HTML outputs (like `projects/expansion-insights.html` when you create the blog post) for this project within `/projects/` or other directories, you can add links here.
 
 ---
 
@@ -74,14 +73,15 @@ This portfolio demonstrates proficiency in:
 * **Web Development (for Technical Blogs):** HTML, CSS, JavaScript (Vanilla JS), Responsive Design
 * **Tools & Libraries:** Font Awesome, Prism.js (for syntax highlighting in blogs)
 
+*(Review this list and add any other relevant technologies you used across your projects)*
 
 ---
 
 ## ▶️ How to Navigate and View
 
 1.  **To Read a Blog Post:** Click on the "Read the [Project Name] Blog Post" link under the relevant project section above. This will take you directly to the HTML file in the repository, which GitHub will render as a web page.
-2.  **To View a Live Dashboard/Output:** Click on the "View [Dashboard Name] on Tableau Public" or "View HTML Output Dashboard" link under the relevant project section. This will take you to the external hosting platform or open the HTML output file directly in the browser.
-3.  **To Explore Code/Files:** Browse the directories in this repository on GitHub, particularly the `/projects` folder. You can also clone the repository using `git clone [repository URL]` and open the files in your preferred code editor or software (like Tableau Desktop).
+2.  **To View a Live Dashboard/Output:** Click on the "View [Dashboard Name] on Tableau Public" or other live/output links under the relevant project section. This will take you to the external hosting platform or open the HTML output file directly in the browser.
+3.  **To Explore Code/Files:** Browse the directories in this repository on GitHub, particularly the `/projects` folder. You can also clone the repository using `git clone [repository URL]` to explore the files locally.
 4.  **View Main Portfolio Page:** Open the `Index.html` file located in the root of the repository in your web browser to see the main portfolio landing page.
 
 ---
