@@ -74,7 +74,6 @@ This portfolio demonstrates proficiency in:
 * **Web Development (for Technical Blogs):** HTML, CSS, JavaScript (Vanilla JS), Responsive Design
 * **Tools & Libraries:** Font Awesome, Prism.js (for syntax highlighting in blogs)
 
-*(Review this list and add any other relevant technologies you used across your projects)*
 
 ---
 
