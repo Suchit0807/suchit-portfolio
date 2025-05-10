@@ -56,7 +56,6 @@ Here's a look at the projects and their accompanying technical blog posts housed
 * **Tools Used:** Excel (Data preprocessing & calculations), Tableau (Dashboarding & visual storytelling).
 * **Project Goal:** To uncover insights for revenue optimization and scalable growth strategies based on detailed sales analysis.
 * **Live Dashboard:** [View Expansion Insights Dashboard on Tableau Public](https://public.tableau.com/authoring/Activity_17351610903030/Story1#1)
-* **Technical Blog Post:** (If you create a blog post for the Expansion project later, you can add a link here following the format above. Otherwise, remove this line.)
 
 ---
 
