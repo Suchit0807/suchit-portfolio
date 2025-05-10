@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Driving Business Performance Through Workforce Analytics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <style>
+        /* --- Global Variables for Dark Mode --- */
+        :root {
+            --background-color: #f9f9f9;
+            --text-color: #333;
+            --heading-color: #2c3e50;
+            --accent-color: #3498db;
+            --container-background: #ffffff;
+            --border-color: #eee;
+            --code-background: #f4f4f4;
+            --code-border: #ddd;
+            --code-accent-border: #3498db;
+            --inline-code-background: #e9e9e9;
+            --blockquote-background: #eef7ff;
+            --blockquote-border: #3498db;
+            --blockquote-text: #555;
+            --toc-background: #ffffff;
+            --toc-border: #ddd;
+            --toc-heading-border: #eee;
+            --toc-link-color: #555;
+            --toc-active-color: #3498db; /* Color for active TOC link */
+             --footer-background: #3498db;
+             --footer-text: white;
+        }
+
+        body.dark-mode {
+            --background-color: #1a1a1a;
+            --text-color: #d4d4d4;
+            --heading-color: #e0e0e0;
+            --accent-color: #9b59b6; /* A different accent color for dark mode */
+            --container-background: #2a2a2a;
+            --border-color: #444;
+            --code-background: #3a3a3a;
+            --code-border: #555;
+            --code-accent-border: #9b59b6;
+            --inline-code-background: #4a4a4a;
+            --blockquote-background: #3a3a3a;
+            --blockquote-border: #9b59b6;
+            --blockquote-text: #bbbbbb;
+            --toc-background: #2a2a2a;
+            --toc-border: #555;
+            --toc-heading-border: #444;
+            --toc-link-color: #bbbbbb;
+            --toc-active-color: #9b59b6; /* Color for active TOC link in dark mode */
+             --footer-background: #2c3e50;
+             --footer-text: #d4d4d4;
+        }
+
+        /* --- Blog Page Styles --- */
+        body {
+            font-family: 'Charter', Georgia, serif;
+            line-height: 1.7;
+            font-size: 1.1em;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            word-wrap: break-word;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for dark mode */
+        }
+
+        code, pre {
+             font-family: 'SFMono-Regular', Menlo, Monaco, Courier, monospace;
+             /* font-size: 0.95em; Adjusted below for specific code block */
+        }
+
+
+        .container {
+            max-width: 740px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--accent-color); /* Use accent color for header background */
+            color: var(--footer-text); /* Use footer text color for header text */
+            padding: 10px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header .container {
+             max-width: 740px;
+             display: flex;
+             justify-content: flex-start;
+             align-items: center;
+             padding: 0 20px;
+             margin: 0 auto;
+             flex-wrap: wrap;
+        }
+
+        /* --- Header Link Styling --- */
+        header a {
+            color: var(--footer-text); /* Ensure header links use footer text color */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            padding: 5px 10px;
+             margin-right: auto;
+        }
+
+         header a:hover {
+              color: var(--heading-color); /* Darker color on hover */
+         }
+
+        /* --- Dark Mode Toggle Styling --- */
+        .dark-mode-toggle {
+             background: none;
+             border: none;
+             color: var(--footer-text); /* Use footer text color */
+             font-size: 1.2em;
+             cursor: pointer;
+             margin-left: 20px; /* Space from home link */
+             padding: 5px;
+             transition: color 0.3s ease;
+        }
+         .dark-mode-toggle:hover {
+              color: var(--heading-color); /* Darker color on hover */
+         }
+         /* Ensure Font Awesome icon is colored */
+         .dark-mode-toggle i {
+              color: var(--footer-text);
+         }
+          .dark-mode-toggle:hover i {
+               color: var(--heading-color);
+          }
+
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--heading-color);
+            text-align: left;
+            line-height: 1.2;
+        }
+
+         h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--heading-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+         }
+
+         /* --- Style for Icons in H2 and H3 Headings --- */
+         h2 i.fas, h3 i.fas {
+             margin-right: 10px;
+             color: var(--accent-color); /* Use accent color for heading icons */
+         }
+
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: var(--heading-color);
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        .post-info {
+            display: flex;
+            align-items: center;
+            font-size: 0.9em;
+            color: #666; /* Keep a consistent muted color */
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+         .post-info > div {
+             display: flex;
+             align-items: center;
+             margin-right: 20px;
+             margin-bottom: 5px;
+         }
+
+        .post-info i {
+             margin-right: 5px;
+             color: var(--accent-color); /* Use accent color for info icons */
+        }
+
+        .post-info span {
+            white-space: nowrap;
+        }
+
+         .post-info a {
+             color: var(--text-color); /* Use standard text color for author name */
+             text-decoration: none;
+             font-weight: bold;
+             margin-left: 4px;
+             transition: color 0.3s ease;
+         }
+          .post-info a:hover {
+              color: var(--accent-color); /* Use accent color on hover */
+          }
+
+
+        .blog-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: zoom-in;
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- CSS for Zoomed Image --- */
+        /* Note: This style will be applied when the image is *not* in the lightbox */
+        .zoomed-image {
+             transform: scale(1.8); /* Adjust scale factor as needed */
+             transform-origin: top center;
+             cursor: zoom-out;
+             z-index: 10; /* Higher z-index when zoomed in place */
+        }
+
+        /* --- Image Lightbox/Modal Styling --- */
+        .lightbox-overlay {
+             display: none; /* Hidden by default */
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+             z-index: 1000; /* Above everything else */
+             justify-content: center;
+             align-items: center;
+        }
+
+         .lightbox-content {
+              max-width: 90%;
+              max-height: 90%;
+              position: relative; /* Needed for the close button positioning */
+         }
+
+        .lightbox-image {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+             /* Ensure no transition or transform from original image style */
+            transition: none;
+            transform: none;
+            cursor: zoom-out; /* Indicate clicking closes */
+        }
+
+        .lightbox-close {
+             position: absolute;
+             top: -25px; /* Position outside the image */
+             right: -25px;
+             font-size: 30px;
+             color: white;
+             cursor: pointer;
+             z-index: 1001; /* Above the image */
+             padding: 5px; /* Increase clickable area */
+             transition: color 0.2s ease;
+        }
+         .lightbox-close:hover {
+              color: #ccc;
+         }
+        /* Adjust close button position on small screens */
+         @media (max-width: 768px) {
+              .lightbox-close {
+                   top: -15px;
+                   right: -15px;
+                   font-size: 24px;
+              }
+         }
+
+
+        /* Style for the single code block */
+         /* Note: Prism.js adds its own styles and structure inside <pre>code */
+        .formula-container pre {
+             background-color: var(--code-background);
+             border: 1px solid var(--code-border); /* Add border back */
+             border-left: 3px solid var(--code-accent-border); /* Accent border */
+             padding: 1em; /* Restore consistent padding */
+             margin-top: 15px;
+             margin-bottom: 0;
+             color: var(--text-color); /* Let Prism handle internal colors, but set base */
+             word-wrap: break-word;
+             white-space: pre-wrap;
+             max-height: 300px;
+             overflow-y: auto;
+             position: relative; /* Needed for copy button positioning */
+             /* Remove styles related to line numbers padding if any were added here */
+        }
+
+        /* Remove specific padding rule for code inside line-numbered pre */
+        /* .formula-container pre.line-numbers code {
+             padding-left: 1em;
+        } */
+
+         /* Ensure Prism's own styling doesn't override pre/code base */
+         .formula-container pre code {
+              background-color: transparent;
+              padding: 0; /* Remove padding from code itself */
+              border-radius: 0;
+              color: inherit; /* Inherit base text color */
+             font-size: 0.9em; /* Apply adjusted font size here */
+         }
+
+
+        /* --- Copy to Clipboard Button Styling --- */
+        .copy-code-button {
+             position: absolute;
+             top: 5px;
+             right: 5px;
+             background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+             border: 1px solid rgba(0, 0, 0, 0.1);
+             border-radius: 3px;
+             padding: 3px 8px;
+             font-size: 0.8em;
+             color: var(--text-color);
+             cursor: pointer;
+             opacity: 0; /* Hidden by default */
+             transition: opacity 0.2s ease, background-color 0.2s ease;
+             z-index: 5; /* Above code but below higher elements */
+        }
+         .formula-container pre:hover .copy-code-button {
+              opacity: 1; /* Show on hover */
+         }
+        .copy-code-button:hover {
+             background-color: rgba(255, 255, 255, 0.5);
+        }
+        body.dark-mode .copy-code-button {
+             background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
+             border: 1px solid rgba(255, 255, 255, 0.1);
+             color: var(--text-color);
+        }
+         body.dark-mode .copy-code-button:hover {
+             background-color: rgba(0, 0, 0, 0.5);
+         }
+        /* --- End Copy to Clipboard Button Styling --- */
+
+
+        /* --- Blockquote Style --- */
+        blockquote {
+            margin: 20px 40px;
+            padding: 10px 20px;
+            border-left: 4px solid var(--blockquote-border);
+            font-style: italic;
+            color: var(--blockquote-text);
+            background-color: var(--blockquote-background);
+        }
+
+        blockquote p {
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        /* --- Dataset Details Simple List Layout --- */
+        .dataset-features-list-simple {
+            margin-bottom: 20px;
+            list-style: none; /* Explicitly remove list style */
+            padding-left: 0; /* Explicitly remove default padding */
+        }
+
+        .dataset-features-list-simple li {
+             margin-bottom: 5px;
+             padding: 5px 0;
+             line-height: 1.5;
+             padding-left: 0; /* Ensure no left padding */
+             position: static; /* Ensure no positioning issues */
+             border-bottom: 1px dotted var(--border-color);
+             list-style: none; /* Redundant, but double-check */
+        }
+         .dataset-features-list-simple li:last-child {
+              border-bottom: none;
+         }
+
+        .dataset-features-list-simple li i.fas {
+             display: none !important; /* Explicitly hide icons */
+        }
+
+        /* --- Formula Container Styling --- */
+         .formula-container {
+             background-color: var(--container-background);
+             border: 1px solid var(--border-color);
+             border-radius: 5px;
+             padding: 20px;
+             margin: 30px 0;
+             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+         }
+
+         .formula-container h3 {
+             margin-top: 0;
+             margin-bottom: 15px;
+             color: var(--accent-color);
+             text-align: center;
+         }
+
+         /* Style for the list of formula names */
+         .formula-container .formula-names-list {
+             list-style: disc;
+             margin-bottom: 15px;
+             padding-left: 20px;
+             font-size: 1em;
+         }
+
+         .formula-container .formula-names-list li {
+              margin-bottom: 5px;
+              padding-left: 0;
+              position: static;
+         }
+
+         .formula-container .formula-names-list li i.fas {
+              display: none;
+         }
+
+
+        /* --- Table of Contents Styling --- */
+        #toc-container {
+            background-color: var(--toc-background);
+            border: 1px solid var(--toc-border);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        #toc-container h3 {
+             margin-top: 0;
+             margin-bottom: 15px;
+             color: var(--heading-color);
+             text-align: left;
+             border-bottom: 1px solid var(--toc-heading-border);
+             padding-bottom: 5px;
+        }
+
+        #toc-container ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        /* Style for both h2 and h3 list items */
+        #toc-container li {
+            margin-bottom: 5px;
+            padding-left: 0;
+            position: static;
+            font-size: 1em;
+            line-height: 1.4;
+        }
+
+        #toc-container li i.fas {
+             display: none;
+        }
+
+        /* Indentation for h3 items */
+        #toc-container li.toc-h3 {
+             padding-left: 15px; /* Indent H3 list items */
+             font-size: 0.95em; /* Slightly smaller font for h3 items */
+        }
+
+
+        #toc-container a {
+            color: var(--toc-link-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        #toc-container a:hover {
+            color: var(--toc-active-color);
+            text-decoration: underline;
+        }
+
+        /* Style for the active TOC link */
+        #toc-container .active {
+             font-weight: bold;
+             color: var(--toc-active-color);
+        }
+         /* --- End Table of Contents Styling --- */
+
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 40px 0;
+        }
+
+        .call-to-action {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .call-to-action p {
+            text-align: center;
+             width: 100%;
+             margin-bottom: 10px;
+             color: var(--text-color);
+        }
+
+        .call-to-action a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 0;
+            background-color: transparent;
+            color: var(--accent-color);
+            text-decoration: none;
+            border-radius: 0;
+            transition: color 0.3s ease;
+            font-weight: normal;
+        }
+
+         .call-to-action a:hover {
+             text-decoration: underline;
+         }
+
+         .call-to-action a i.fab {
+            margin-right: 5px;
+         }
+
+
+        /* --- Footer Styling --- */
+        footer {
+            background-color: var(--footer-background);
+            color: var(--footer-text);
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        footer .container {
+             max-width: 740px;
+             margin: 0 auto;
+             padding: 0 20px;
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+        }
+
+        footer p {
+             margin-bottom: 10px;
+             color: var(--footer-text);
+        }
+
+        .social-icons a {
+             color: var(--footer-text);
+             margin: 0 10px;
+             font-size: 1.5em;
+             transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+             color: var(--heading-color);
+        }
+         /* --- End Footer Styling --- */
+
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px auto;
+                padding: 0 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                margin-top: 25px;
+                margin-bottom: 10px;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                 margin-top: 20px;
+                 margin-bottom: 8px;
+            }
+
+            p {
+                text-align: left;
+                 margin-bottom: 10px;
+            }
+
+             pre {
+                 padding: 0.8em 1em;
+             }
+
+             .blog-image {
+                 margin: 15px auto;
+             }
+
+             .image-caption {
+                 margin-top: -5px;
+                 margin-bottom: 15px;
+             }
+
+             .call-to-action a {
+                 display: block;
+                 margin: 5px 0;
+                 text-align: center;
+             }
+
+             header .container {
+                 flex-direction: column;
+                 align-items: center;
+             }
+              header a {
+                  margin: 0;
+                  margin-bottom: 10px;
+              }
+
+            /* Adjust font sizes for smaller screens */
+             body {
+                 font-size: 1em;
+             }
+             code, pre {
+                 font-size: 0.9em;
+             }
+             .formula-container pre code { /* Ensure specific rule is adjusted */
+                 font-size: 0.85em; /* Slightly smaller code on small screens */
+             }
+
+
+             .post-info {
+                 font-size: 0.8em;
+                 justify-content: center;
+             }
+             .post-info > div {
+                  margin-right: 10px;
+                  margin-bottom: 3px;
+             }
+
+            /* Adjust blockquote for small screens */
+            blockquote {
+                margin: 20px 15px;
+                padding: 8px 15px;
+            }
+
+             /* Adjust formula container for small screens */
+             .formula-container {
+                 padding: 15px;
+                 margin: 20px 0;
+             }
+             .formula-container pre {
+                 padding: 0.8em;
+                 max-height: 200px; /* Adjust max height on smaller screens */
+             }
+
+            /* Dataset details list on small screens */
+             .dataset-features-list-simple li {
+                 margin-bottom: 3px;
+                 padding: 3px 0;
+             }
+
+            /* TOC Styling on Small Screens */
+            #toc-container {
+                 margin: 20px 0;
+                 padding: 15px;
+            }
+             #toc-container h3 {
+                  text-align: center;
+                  margin-bottom: 10px;
+             }
+             #toc-container li.toc-h3 {
+                  padding-left: 10px; /* Reduce indent for h3 items */
+             }
+             #toc-container li {
+                  margin-bottom: 3px;
+             }
+
+            /* Hide copy button on very small screens if space is tight */
+             .copy-code-button {
+                  display: none;
+             }
+
+
+        }
+
+         /* Adjustments for very small screens where even horizontal list items might wrap awkwardly */
+         @media (max-width: 480px) {
+              .post-info {
+                  flex-direction: column;
+                  align-items: flex-start;
+              }
+               .post-info > div {
+                   margin-right: 0;
+                   margin-bottom: 5px;
+               }
+               .post-info a {
+                   margin-left: 0;
+               }
+         }
+
+         /* --- End Responsive Adjustments --- */
+
+         /* --- Add Styles for Heading Icons Here if Desired --- */
+         /* You can add CSS rules here to style icons next to your headings */
+         /* Example (requires Font Awesome library linked in <head>): */
+         /* h2 i.fas { */
+         /* margin-right: 10px; /* Space between icon and heading text */
+         /* color: #3498db; /* Match theme color */
+         /* } */
+         /* You may need to adjust vertical alignment if icons are not centered with text */
+         /* --- End Styles for Heading Icons --- */
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+             <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+             <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                 <i class="fas fa-moon"></i>
+             </button>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <article>
+            <h1>Driving Business Performance Through Workforce Analytics: An HR Dashboard Showcase</h1>
+            <p>Exploring how data visualization can provide actionable insights for workforce management and business strategy using Excel and Tableau for cleaning, formatting, and visualizations.</p>
+
+            <div class="post-info">
+                <div>By <a href="https://www.linkedin.com/in/suchit-pathak/" target="_blank">Suchit Pathak</a></div> <div><i class="far fa-calendar-alt"></i> <span id="post-date">9 May, 2025</span></div>
+                <div><i class="far fa-clock"></i> <span id="read-time">~15 min read</span></div>
+            </div>
+            <hr>
+
+            <h2><i class="fas fa-star"></i> Key Takeaways for Managers</h2>
+            <p>For busy leaders, here are the core insights and actionable capabilities the HR Analytics Dashboard provides:</p>
+            <ul>
+                <li><i class="fas fa-arrow-right"></i> Quickly understand <strong>workforce size, growth, and turnover trends</strong> to inform strategic planning and capacity management.</li>
+                <li><i class="fas fa-arrow-right"></i> Gain immediate visibility into <strong>team distribution by department and location</strong> for efficient resource allocation and organizational design.</li>
+                <li><i class="fas fa-arrow-right"></i> Explore <strong>workforce demographics (Gender, Age, Education, Performance)</strong> to support diversity initiatives, succession planning, and talent development.</li>
+                 <li><i class="fas fa-arrow-right"></i> Analyze <strong>compensation patterns</strong> to ensure pay equity and develop competitive salary strategies based on key workforce segments.</li>
+                 <li><i class="fas fa-arrow-right"></i> <strong>Drill down to individual employee details</strong> for operational tasks like talent identification, team management, and supporting HR processes.</li>
+            </ul>
+            <hr>
+
+            <div id="toc-container">
+                 <h3>Table of Contents</h3>
+                 </div>
+            <hr>
+
+
+            <p>In today's dynamic business landscape, an organization's competitive edge is increasingly defined by its <strong>people</strong>. Effectively managing, developing, and retaining talent is no longer just an HR function; it's a <strong>strategic imperative</strong> that directly impacts <strong>profitability</strong>, <strong>innovation</strong>, and <strong>long-term sustainability</strong>. However, many leaders face the challenge of making critical decisions about their workforce without <strong>clear</strong>, <strong>actionable data</strong>.</p>
+             <blockquote>
+                <p>This project addresses that challenge head-on. I've developed an <strong>HR Analytics Dashboard</strong> designed to transform raw human resources data into <strong>strategic intelligence</strong>, providing executives and decision-makers with the insights needed to navigate workforce complexity and drive <strong>business success</strong>.</p>
+             </blockquote>
+
+
+            <h2><i class="fas fa-table"></i> Dataset Details</h2>
+            <p>The dataset used for this project was synthetically generated to simulate typical enterprise HR data while incorporating specific characteristics to enable meaningful analysis. The data includes detailed records for approximately 8,000 employees. Data cleaning and initial formatting were performed using Python (with Pandas) and Excel before loading into Tableau for visualization.</p>
+             <blockquote>
+                 <p>The dataset used for this project was synthetically generated to simulate typical enterprise HR data.</p>
+             </blockquote>
+            <p>Here is an overview of the key attributes included in the dataset:</p>
+
+            <ul class="dataset-features-list-simple">
+                <li><strong>Employee ID:</strong> A unique identifier.</li>
+                <li><strong>First Name:</strong> Randomly generated.</li>
+                <li><strong>Last Name:</strong> Randomly generated.</li>
+                <li><strong>Gender:</strong> Randomly chosen with specific probabilities (46% Female, 54% Male).</li>
+                <li><strong>State and City:</strong> Randomly assigned from a predefined list.</li>
+                <li><strong>Hire Date:</strong> Randomly generated with custom probabilities for each year (2015-2024).</li>
+                <li><strong>Department:</strong> Randomly chosen from a list with specified probabilities.</li>
+                <li><strong>Job Title:</strong> Randomly selected based on the department, with specific probabilities.</li>
+                <li><strong>Education Level:</strong> Determined based on the job title from a predefined mapping.</li>
+                <li><strong>Performance Rating:</strong> Randomly selected from defined categories with specified probabilities.</li>
+                <li><strong>Overtime:</strong> Randomly chosen with specific probabilities (30% Yes, 70% No).</li>
+                <li><strong>Salary:</strong> Generated based on the department and job title, within specific ranges.</li>
+                <li><strong>Birth Date:</strong> Generated based on age group distribution and job title requirements, consistent with hire date.</li>
+                <li><strong>Termination Date:</strong> Assigned to a subset (11.2% of total) with specific probabilities, at least 6 months after hire date.</li>
+                <li><strong>Adjusted Salary:</strong> Calculated based on gender, education level, and age, applying specific multipliers and increments.</li>
+            </ul>
+
+            <hr>
+
+            <div class="formula-container">
+                <h3>Key Formulas</h3>
+                 <p>Below are key calculated fields used in Tableau to derive metrics. The formulas are syntax-highlighted for readability.</p>
+                 <ul class="formula-names-list">
+                      <li>Total Active</li>
+                      <li>Total Terminated</li>
+                      <li>Length of Hire</li>
+                      <li>Status</li>
+                 </ul>
+                <pre><code class="language-tableau">
+// Total Active: Counts employees with no termination date
+COUNT(IF ISNULL ([Termdate]) THEN [Employee ID] END)
+
+// Total Terminated: Counts employees with a termination date
+COUNT(IF NOT ISNULL ([Termdate]) THEN [Employee ID] END)
+
+// Length of Hire: Calculates tenure in years
+IF ISNULL ([Termdate])
+THEN DATEDIFF('year', [Hiredate], TODAY())
+ELSE DATEDIFF('year', [Hiredate], [Termdate])
+END
+
+// Status: Categorizes employees as 'Hired' or 'Terminated'
+IF ISNULL ([Termdate]) THEN 'Hired'
+ELSE 'Terminated'
+END
+                </code><button class="copy-code-button">Copy Code</button></pre>
+            </div>
+
+            <hr>
+
+
+            <h2><i class="fas fa-database"></i> Understanding the Data Foundation and Business Need</h2>
+            <p>The journey to creating an effective HR Analytics Dashboard begins with understanding the critical <strong>business questions</strong> that need answering and identifying the necessary data. Raw HR data, while abundant, often resides in disparate systems and requires careful processing to become a reliable source of insights.</p>
+            <p>For this project, the data foundation consisted of typical employee records, including information on demographics, employment status, departmental assignments, compensation, and performance ratings. The initial step involved gathering this data and ensuring its <strong>cleanliness and structure</strong>. This phase is paramount;</p>
+            <blockquote>
+                <p><strong>reliable insights</strong> can only emerge from <strong>reliable data</strong>.</p>
+            </blockquote>
+            <p>Using tools like <strong>Excel and Tableau</strong> for data cleaning and preliminary formatting was essential to prepare the dataset for analysis and visualization.</p>
+            <p>This process highlighted the inherent business need: how to transform these rows and columns of data into a format that allows executives to quickly grasp complex workforce trends, identify potential issues like pay gaps or high turnover, and inform strategic decisions without needing to sift through detailed reports. The goal was to build a tool that provides immediate answers to pressing questions about the organization's most valuable asset.</p>
+
+            <hr>
+
+            <h2><i class="fas fa-chart-bar"></i> Visualizing Strategic Workforce Insights - The Executive Overview</h2>
+            <p>With the data prepared, the next step was to design a dashboard that provides <strong>clear</strong>, <strong>strategic insights</strong> at a glance, tailored for an executive audience. The goal was to move beyond simple tables and reports to create a dynamic, interactive tool that highlights key trends and patterns.</p>
+             <blockquote>
+                 <p>The goal was to move beyond simple tables and reports to create a dynamic, interactive tool that highlights key trends and patterns.</p>
+             </blockquote>
+            <p>Figure 1 shows the primary overview page of the HR Analytics Dashboard. This view is designed to act as an executive summary, providing immediate visibility into the most critical aspects of the workforce.</p>
+
+            <figure>
+                 <img src="../assets/images/hr-dashboard-figure1-overview.jpg" alt="HR Analytics Dashboard Executive Overview" class="blog-image">
+                 <figcaption class="image-caption">Figure 1: HR Analytics Dashboard - Executive Overview. This view provides high-level insights into workforce size, trends, demographics, and key compensation metrics, enabling data-driven strategic decisions.</figcaption>
+            </figure>
+
+            <p style="text-align: center;"><a href="https://public.tableau.com/shared/Q79Q3SY99?:display_count=n&:origin=viz_share_link" target="_blank">View the interactive HR Analytics Dashboard on Tableau Public</a></p>
+
+
+            <p>This executive overview presents several key areas:</p>
+
+            <h3><i class="fas fa-chart-line"></i> Workforce Size and Trends</h3>
+            <ul>
+                <li><i class="fas fa-arrow-right"></i> <strong>Insight:</strong> Dashboard highlights <strong>Active Employee count 7,984</strong>, with <strong>8,950 Hires</strong> and <strong>966 Terminations</strong>.</li>
+                <li><i class="fas fa-arrow-right"></i> <strong>Implication:</strong> Provides a clear picture of <strong>net workforce change</strong> and overall growth momentum, crucial for <strong>strategic workforce planning</strong> and managing <strong>operational capacity</strong>.</li>
+                 <li><i class="fas fa-arrow-right"></i> <strong>Insight:</strong> Trend lines visually illustrate the history of hiring and attrition over time.</li>
+                <li><i class="fas fa-arrow-right"></i> <strong>Implication:</strong> Easy to identify periods of rapid expansion or potentially concerning increases in turnover, informing <strong>proactive management</strong>.</li>
+            </ul>
+
+
+            <h3><i class="fas fa-map-marker-alt"></i> Departmental and Location Breakdown</h3>
+            <ul>
+                <li><i class="fas fa-arrow-right"></i> <strong>Insight:</strong> Dashboard provides a clear breakdown by Department (e.g., <strong>Operations largest with 2429</strong>, <strong>Sales follows with 1634</strong>).</li>
+                <li><i class="fas fa-arrow-right"></i> <strong>Implication:</strong> Vital for <strong>resource allocation</strong> and understanding the size of each team.</li>
+                <li><i class="fas fa-arrow-right"></i> <strong>Insight:</strong> Location breakdown shows split between HQ in New York (approx. <strong>70%</strong>) and branches across USA (remaining <strong>30%</strong>).</li>
+                <li><i class="fas fa-arrow-right"></i> <strong>Implication:</strong> Crucial for <strong>organizational design</strong>, understanding talent distribution, and planning regional support structures.</li>
+            </ul>
+
+            <h3><i class="fas fa-users"></i> Workforce Demographics</h3>
+             <ul>
+                <li><i class="fas fa-arrow-right"></i> <strong>Insight:</strong> Presents <strong>Gender</strong> distribution (approx. <strong>46% Female</strong>, <strong>54% Male</strong>).</li>
+                <li><i class="fas fa-arrow-right"></i> <strong>Implication:</strong> Provides a high-level view of gender balance, supporting <strong>diversity initiatives</strong>.</li>
+                <li><i class="fas fa-arrow-right"></i> <strong>Insight:</strong> Visualizations show concentration in certain <strong>age groups</strong> (e.g., <strong>35-44 range</strong>) and across <strong>education levels</strong> (e.g., large segment with <strong>Bachelor's</strong>).</li>
+                <li><i class="fas fa-arrow-right"></i> <strong>Implication:</strong> Key for planning for <strong>succession</strong> as the workforce ages and assessing collective <strong>educational qualifications</strong> and potential skill sets.</li>
+                 <li><i class="fas fa-arrow-right"></i> <strong>Insight:</strong> Visual explores the <strong>correlation between Education and Performance</strong>.</li>
+                 <li><i class="fas fa-arrow-right"></i> <strong>Implication:</strong> Offers insights into how formal qualifications relate to performance ratings, informing <strong>talent development</strong> strategies.</li>
+            </ul>
+
+            <h3><i class="fas fa-dollar-sign"></i> Compensation Patterns</h3>
+             <ul>
+                <li><i class="fas fa-arrow-right"></i> <strong>Insight:</strong> Enables visual comparison of average salaries by <strong>Education and Gender</strong> (e.g., Master's degree holders around <strong>$80K</strong>).</li>
+                <li><i class="fas fa-arrow-right"></i> <strong>Implication:</strong> Critical for analyzing <strong>pay equity</strong> and spotting potential differences across segments.</li>
+                <li><i class="fas fa-arrow-right"></i> <strong>Insight:</strong> ‘Age vs Salary’ visualization explores how compensation progresses with age.</li>
+                 <li><i class="fas fa-arrow-right"></i> <strong>Implication:</strong> Provides insights into how <strong>experience and tenure</strong> are rewarded, informing <strong>compensation strategies</strong>.</li>
+            </ul>
+
+            <hr>
+
+            <h2><i class="fas fa-search"></i> Drilling Down for Operational Detail</h2>
+            <p>While the executive overview (Figure 1) provides critical strategic insights, operational HR functions and departmental managers require the ability to access and analyze more granular employee data. This need is met by the detailed employee view within the dashboard.</p>
+            <p>Figure 2 shows the 'Employee Details' section, designed to serve as a dynamic and filterable employee roster.</p>
+             <blockquote>
+                <p>This filterable list provides detailed information for each employee, supporting operational tasks and deeper data exploration.</p>
+             </blockquote>
+
+            <figure>
+                <img src="../assets/images/hr-dashboard-figure2-details.jpg" alt="HR Analytics Dashboard Employee Details View" class="blog-image">
+                 <figcaption class="image-caption">Figure 2: HR Analytics Dashboard - Employee Details View. This filterable list provides detailed information for each employee, supporting operational tasks and deeper data exploration.</figcaption>
+            </figure>
+
+             <p style="text-align: center;"><a href="https://public.tableau.com/shared/Q79Q3SY99?:display_count=n&:origin=viz_share_link" target="_blank">Explore Employee Details in the HR Analytics Dashboard on Tableau Public</a></p>
+
+            <p>The significant value of this view lies in its <strong>robust filtering capabilities</strong>, which empower users to quickly segment the workforce based on various criteria visible at the top of the view. This is invaluable for numerous operational and tactical tasks:</p>
+
+            <ul>
+                <li><i class="fas fa-check"></i> <strong>Targeted Talent Identification:</strong> Quickly find employees within a specific <strong>Department</strong> with particular <strong>Education Levels</strong> or a certain <strong>Length of Employment</strong> for forming project teams or identifying candidates for internal mobility.</li>
+                <li><i class="fas fa-clipboard-check"></i> <strong>Scenario: Review Team for Annual Planning.</strong> A department manager filters by their 'Department' to easily see the full roster, employee status, and length of employment for planning workload and development needs.</li>
+                  <li><i class="fas fa-clipboard-check"></i> <strong>Scenario: Analyze Recent Departures.</strong> Filter by 'Status' = 'Terminated' and 'Termination Date' within a specific range to examine the details of employees who have recently left the organization.</li>
+             </ul>
+
+
+            <p><strong>Connecting Strategic Insights to Detail:</strong> This detailed view allows users to <strong>"drill down"</strong> and investigate the specific employee records that contribute to the high-level trends seen in the overview (Figure 1). For example, if the overview highlights increasing turnover in a particular department, this view can be filtered to examine the details of the employees who have left that department, aiding in root cause analysis.</p>
+
+            <hr>
+
+            <h2><i class="fas fa-check-circle"></i> Conclusion</h2>
+            <p>In conclusion, the ability to leverage data analytics in Human Resources is no longer a luxury but a <strong>strategic necessity</strong> for any organization aiming for sustained success. As demonstrated through this project, a well-designed HR Analytics Dashboard can transform complex workforce data into <strong>clear</strong>, <strong>actionable intelligence</strong>.</p>
+            <p>By providing a comprehensive view of workforce size, trends, demographics, compensation patterns, and detailed employee information, this dashboard empowers executives and managers to make <strong>data-driven decisions</strong> that optimize talent management, ensure equity, improve operational efficiency, and inform strategic planning. It moves the HR function from reactive reporting to proactive, strategic partnership.</p>
+             <blockquote>
+                 <p>This project exemplifies my commitment to using data to solve real-world business challenges and drive positive organizational outcomes.</p>
+             </blockquote>
+            <p>Through the development of this dashboard, I've applied key skills in data cleaning, analysis, visualization, and, most importantly, translating technical data into <strong>meaningful business insights</strong> and <strong>value propositions</strong>.</p>
+
+            <hr>
+
+            <div class="call-to-action">
+                 <p>Let's connect or discuss this project:</p>
+                 <a href="https://www.linkedin.com/in/suchit-pathak/" target="_blank"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a>
+            </div>
+
+        </article>
+
+    </div>
+
+    <div class="lightbox-overlay">
+         <div class="lightbox-content">
+             <img src="" alt="Zoomed image" class="lightbox-image">
+             <span class="lightbox-close">&times;</span>
+         </div>
+     </div>
+
+
+    <footer>
+         <div class="container">
+              <p>Suchit Pathak</p>
+              <div class="social-icons">
+                  <a href="mailto:suchitpathak0807@gmail" target="_blank"><i class="fas fa-envelope"></i></a>
+                  <a href="https://www.linkedin.com/in/suchit-pathak/" target="_blank"><i class="fab fa-linkedin"></i></a>
+              </div>
+         </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+             // --- Dark Mode Toggle ---
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const body = document.body;
+
+            // Check for saved preference on load
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                 body.classList.add(savedTheme + '-mode');
+                 if (savedTheme === 'dark') {
+                      darkModeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+                 } else {
+                      darkModeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
+                 }
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                 // Check system preference if no saved preference
+                 body.classList.add('dark-mode');
+                 localStorage.setItem('theme', 'dark');
+                  darkModeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+            } else {
+                 // Default to light mode if no preference and no system preference for dark
+                 body.classList.remove('dark-mode');
+                 localStorage.setItem('theme', 'light');
+                  darkModeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon'); // Ensure moon icon
+            }
+
+
+            darkModeToggle.addEventListener('click', function() {
+                if (body.classList.contains('dark-mode')) {
+                    body.classList.remove('dark-mode');
+                    localStorage.setItem('theme', 'light');
+                    this.querySelector('i').classList.replace('fa-sun', 'fa-moon');
+                } else {
+                    body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                    this.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+                }
+            });
+             // --- End Dark Mode Toggle ---
+
+
+            // --- Image Lightbox Functionality ---
+            const blogImages = document.querySelectorAll('.blog-image');
+            const lightboxOverlay = document.querySelector('.lightbox-overlay');
+            const lightboxImage = document.querySelector('.lightbox-image');
+            const lightboxClose = document.querySelector('.lightbox-close');
+
+            blogImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    // Set the source of the lightbox image to the clicked image's source
+                    lightboxImage.src = this.src;
+                     lightboxImage.alt = this.alt; // Also copy alt text
+                    // Display the lightbox
+                    lightboxOverlay.style.display = 'flex'; // Use flex to center content
+                    // Prevent scrolling the background body
+                    body.style.overflow = 'hidden';
+                });
+            });
+
+            // Close lightbox when clicking the close button
+            lightboxClose.addEventListener('click', function() {
+                lightboxOverlay.style.display = 'none';
+                 // Restore scrolling
+                body.style.overflow = '';
+            });
+
+            // Close lightbox when clicking the overlay (but not the image itself)
+            lightboxOverlay.addEventListener('click', function(e) {
+                if (e.target === lightboxOverlay) { // Check if the click was directly on the overlay
+                    lightboxOverlay.style.display = 'none';
+                    // Restore scrolling
+                    body.style.overflow = '';
+                }
+            });
+
+            // Close lightbox when pressing the Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightboxOverlay.style.display === 'flex') {
+                    lightboxOverlay.style.display = 'none';
+                     // Restore scrolling
+                    body.style.overflow = '';
+                }
+            });
+            // --- End Image Lightbox Functionality ---
+
+
+            // --- Copy to Clipboard (for Formulas) ---
+            const copyButton = document.querySelector('.copy-code-button');
+            const codeBlock = document.querySelector('.formula-container pre code'); // Target the code element
+
+            if (copyButton && codeBlock) { // Ensure elements exist
+                copyButton.addEventListener('click', function() {
+                    // Use the modern Clipboard API if available
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(codeBlock.textContent).then(function() {
+                            // Success feedback
+                            copyButton.textContent = 'Copied!';
+                            setTimeout(function() {
+                                copyButton.textContent = 'Copy Code';
+                            }, 2000); // Reset text after 2 seconds
+                        }).catch(function(err) {
+                            // Error feedback
+                            console.error('Could not copy text: ', err);
+                            copyButton.textContent = 'Error!';
+                             setTimeout(function() {
+                                copyButton.textContent = 'Copy Code';
+                            }, 2000);
+                        });
+                    } else {
+                        // Fallback for older browsers (less reliable)
+                        const textArea = document.createElement('textarea');
+                        textArea.value = codeBlock.textContent;
+                        textArea.style.position = 'fixed'; // Prevent scrolling to bottom
+                        document.body.appendChild(textArea);
+                        textArea.focus();
+                        textArea.select();
+                        try {
+                            document.execCommand('copy');
+                            copyButton.textContent = 'Copied!';
+                             setTimeout(function() {
+                                copyButton.textContent = 'Copy Code';
+                            }, 2000);
+                        } catch (err) {
+                            console.error('Fallback: Oops, unable to copy', err);
+                            copyButton.textContent = 'Error!';
+                             setTimeout(function() {
+                                copyButton.textContent = 'Copy Code'; // Corrected variable name
+                            }, 2000);
+                        }
+                        document.body.removeChild(textArea);
+                    }
+                });
+            }
+            // --- End Copy to Clipboard ---
+
+
+            // --- Table of Contents Generation and Active Highlighting ---
+            const tocContainer = document.getElementById('toc-container');
+            // The TOC list will be generated directly inside tocContainer, after the h3
+            const headings = document.querySelectorAll('h2, h3');
+            const tocLinks = []; // Array to store TOC links and their target sections
+
+            if (tocContainer) {
+                 const tocList = document.createElement('ul');
+
+                 headings.forEach(heading => {
+                    // Generate a simple ID if one doesn't exist
+                    const id = heading.id || heading.textContent.toLowerCase()
+                        .replace(/\s+/g, '-') // Replace spaces with dashes
+                        .replace(/[^a-z0-9-]+/g, '') // Remove non-alphanumeric characters except dashes
+                        .replace(/--+/g, '-') // Replace multiple dashes with a single dash
+                        .replace(/^-+|-+$/g, ''); // Remove leading/trailing dashes
+
+                    heading.id = id; // Ensure the heading has an ID
+
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+
+                    link.href = '#' + id;
+                    // Remove common icons and trim text for the link text
+                    link.textContent = heading.textContent.replace(/[\u{2B50}\u{1F4DA}\u{1F4CA}\u{1F4C8}\u{1F50D}\u{2705}\u{1F4C6}\u{1F4B0}\u{1F465}\u{1F4AF}\u{1F4BB}\u{1F4BC}\u{1F4C1}\u{1F4C4}\u{1F4DD}]/gu, '').trim();
+                    link.title = heading.textContent.trim(); // Keep full text including icons in title
+
+                    // Add a class to the list item to indicate heading level for styling indentation
+                    if (heading.tagName === 'H2') {
+                        listItem.classList.add('toc-h2');
+                    } else if (heading.tagName === 'H3') {
+                        listItem.classList.add('toc-h3');
+                    }
+
+                    listItem.appendChild(link);
+                    tocList.appendChild(listItem);
+
+                    // Store link and its corresponding section for active highlighting
+                    tocLinks.push({ link: link, section: heading });
+                });
+
+                if (tocList.children.length > 0) {
+                    // Append the generated list AFTER the h3 inside the container
+                    const tocHeading = tocContainer.querySelector('h3');
+                    if (tocHeading) {
+                         tocContainer.insertBefore(tocList, tocHeading.nextSibling);
+                    } else {
+                         tocContainer.appendChild(tocList); // Append if no h3 found
+                    }
+
+                } else {
+                    tocContainer.style.display = 'none'; // Hide container if no headings
+                }
+
+                // Active TOC Highlighting on Scroll
+                function highlightActiveTocLink() {
+                    let activeLink = null;
+                    // Get the current scroll position
+                    const scrollY = window.scrollY || window.pageYOffset;
+
+                    // Find the section that is currently in the viewport or just above it
+                    // Iterate backwards to find the *last* section whose top is visible
+                    for (let i = tocLinks.length - 1; i >= 0; i--) {
+                        const section = tocLinks[i].section;
+                         // Add a buffer (e.g., 200px) so the link highlights slightly before the section reaches the very top
+                         // Use section.getBoundingClientRect().top + scrollY for a more accurate position regardless of scroll origin
+                        if ((section.getBoundingClientRect().top + scrollY) <= scrollY + 200) {
+                            activeLink = tocLinks[i].link;
+                            break; // Found the active section
+                        }
+                    }
+
+                    // Remove 'active' class from all links
+                    document.querySelectorAll('#toc-container a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+
+
+                    // Add 'active' class to the found link
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+
+                // Add scroll event listener
+                window.addEventListener('scroll', highlightActiveTocLink);
+
+                // Initial call to highlight the correct section on page load
+                highlightActiveTocLink();
+
+            } // End if(tocContainer)
+             // --- End Table of Contents Generation and Active Highlighting ---
+
+
+        }); // End DOMContentLoaded
+    </script>
+
+</body>
+</html>
