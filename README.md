@@ -34,7 +34,7 @@ Here's a look at the projects and their accompanying technical blog posts housed
 ### 🏪 Superstore Sales Performance Dashboard
 
 * **Description:** This project analyzes the Superstore dataset to uncover insights into sales performance, profitability, and trends across different categories and regions. The goal is to visualize key sales metrics to support strategic planning. The related blog post discusses the analysis and key takeaways from the dashboard.
-* **Technologies:** Tableau, (potentially Python/Excel for data prep), HTML, CSS, JavaScript.
+* **Technologies:** Tableau, (Python/Excel for data prep), HTML, CSS, JavaScript.
 * **Live Dashboard:** [View Sales Performance Dashboard on Tableau Public](https://public.tableau.com/app/profile/suchit.pathak/viz/SuperStoreDashboardSalesPerformance/Dashboard6)
 * **Technical Blog Post:** [Read the Superstore Sales Blog Post](https://suchit0807.github.io/suchit-portfolio/projects/superstore-blog.html)
 
@@ -43,7 +43,7 @@ Here's a look at the projects and their accompanying technical blog posts housed
 ### 🛍️ Superstore Customer Dashboard
 
 * **Description:** An analysis of the Superstore dataset specifically focusing on customer segmentation and behavior. This dashboard visualizes insights related to customer purchasing patterns, lifetime value, and demographic distribution to help inform customer-centric strategies.
-* **Technologies:** Tableau, (potentially Python/Excel for data prep), HTML, CSS, JavaScript.
+* **Technologies:** Tableau, (Python/Excel for data prep), HTML, CSS, JavaScript.
 * **Live Dashboard:** [View Customer Dashboard on Tableau Public](https://public.tableau.com/app/profile/suchit.pathak/viz/SuperstoreCustomerDashboard_17453184546330/CustomerDashboard)
 
 
