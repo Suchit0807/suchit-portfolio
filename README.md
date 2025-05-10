@@ -45,7 +45,7 @@ Here's a look at the projects and their accompanying technical blog posts housed
 * **Description:** An analysis of the Superstore dataset specifically focusing on customer segmentation and behavior. This dashboard visualizes insights related to customer purchasing patterns, lifetime value, and demographic distribution to help inform customer-centric strategies.
 * **Technologies:** Tableau, (potentially Python/Excel for data prep), HTML, CSS, JavaScript.
 * **Live Dashboard:** [View Customer Dashboard on Tableau Public](https://public.tableau.com/app/profile/suchit.pathak/viz/SuperstoreCustomerDashboard_17453184546330/CustomerDashboard)
-* **Technical Blog Post:** (If you have a separate blog post specifically for the Customer Dashboard, you can add a link here following the format above. Otherwise, remove this line.)
+
 
 ---
 
